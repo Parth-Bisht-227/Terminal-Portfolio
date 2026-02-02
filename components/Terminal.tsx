@@ -1,0 +1,331 @@
+
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Terminal as TerminalIcon, ChevronRight, HelpCircle, ExternalLink, Code2, Zap, Github, Linkedin, Twitter, BookOpen, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { TerminalLine } from '../types';
+import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, COLORS, SOCIALS, RESUME_DATA } from '../constants';
+import MissionHUD from './MissionHUD';
+
+const COMMANDS = ['help', 'about', 'projects', 'vibe-coded', 'mission', 'skills', 'contact', 'resume', 'clear'];
+
+const Terminal: React.FC = () => {
+  const [input, setInput] = useState('');
+  const [history, setHistory] = useState<TerminalLine[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+  const [historyQueue, setHistoryQueue] = useState<string[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const sequence = async () => {
+      addOutput(<div className="mb-4"><p className="text-xl font-bold shimmer">{SYSTEM_DATA.headline}</p><p className="text-xs text-slate-500 dark:text-white/50">{SYSTEM_DATA.subtext}</p></div>);
+      for (let i = 0; i < SYSTEM_DATA.bootSequence.length; i++) {
+        await new Promise(r => setTimeout(r, 200));
+        addOutput(SYSTEM_DATA.bootSequence[i], 'success');
+      }
+      addOutput('Type "help" to view available neural commands.', 'output');
+    };
+    sequence();
+
+    const handleGuiCommand = (e: any) => {
+      if (e.detail?.command !== undefined) {
+        if (e.detail.command === '') {
+          inputRef.current?.focus();
+        } else {
+          handleCommand(e.detail.command);
+        }
+      }
+    };
+
+    window.addEventListener('terminal-command', handleGuiCommand);
+    return () => window.removeEventListener('terminal-command', handleGuiCommand);
+  }, []);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [history]);
+
+  const addOutput = (content: string | React.ReactNode, type: TerminalLine['type'] = 'output') => {
+    setHistory(prev => [...prev, { id: Math.random().toString(36), content, type }]);
+  };
+
+  const handleCommand = (cmd: string) => {
+    const trimmed = cmd.toLowerCase().trim();
+    if (!trimmed) return;
+
+    setHistoryQueue(prev => [cmd, ...prev]);
+    setHistoryIndex(-1);
+    addOutput(<div className="flex items-center gap-2 mt-2 font-bold"><ChevronRight size={14} className="text-cyan-600 dark:text-cyber-cyan" /> {cmd}</div>, 'command');
+
+    switch (trimmed) {
+      case 'help':
+        addOutput(
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-2 max-w-2xl">
+            {COMMANDS.map(c => (
+              <div key={c} className="flex items-center gap-2">
+                <span className="text-amber-600 dark:text-cyber-amber font-bold text-[10px] uppercase">[{c}]</span>
+              </div>
+            ))}
+          </div>
+        );
+        break;
+      case 'about':
+        addOutput(
+          <div className="space-y-3 mt-2 border-l-2 border-cyber-darkPurple dark:border-cyber-purple pl-4 max-w-2xl">
+            <p className="text-xs font-bold text-cyber-darkPurple dark:text-cyber-purple tracking-widest uppercase">Bio-Authentication Successful</p>
+            <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
+              I’m an Information Technology undergraduate at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University (Batch of 2027)</span>. 
+              I focus on building end-to-end AI applications, combining deep learning models with real-time interfaces.
+            </p>
+            <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
+              My interests lie in <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">Generative AI, Voice AI, and Agent-based systems</span>. 
+              I actively build experimental systems that interact naturally through vision, speech, and reasoning.
+            </p>
+          </div>
+        );
+        break;
+      case 'projects':
+        addOutput(
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            {PROJECTS.map(p => (
+              <div key={p.id} className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg border border-black/5 dark:border-white/5 hover:border-cyan-500/50 dark:hover:border-cyber-cyan/50 transition-all cursor-pointer group">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-bold text-cyan-600 dark:text-cyber-cyan uppercase tracking-widest">{p.id}</span>
+                  <Code2 size={14} className="text-slate-400 dark:text-white/20 group-hover:text-cyan-600 dark:group-hover:text-cyber-cyan" />
+                </div>
+                <h4 className="font-bold text-sm mb-1 text-slate-900 dark:text-white">{p.name}</h4>
+                <p className="text-[10px] text-slate-600 dark:text-white/70 mb-1 italic font-bold">{p.role}</p>
+                <p className="text-[10px] text-slate-500 dark:text-white/50 mb-3 leading-snug">{p.description}</p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {p.tech.map(t => (
+                    <span key={t} className="text-[8px] px-1.5 py-0.5 rounded border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 text-slate-700 dark:text-white/80">{t}</span>
+                  ))}
+                </div>
+                <a href={p.link} target="_blank" className="text-[10px] font-bold text-cyber-darkGreen dark:text-cyber-green hover:underline flex items-center gap-1">
+                  [ EXECUTE_SOURCE ] <ExternalLink size={10} />
+                </a>
+              </div>
+            ))}
+          </div>
+        );
+        break;
+      case 'vibe-coded':
+        addOutput(
+          <div className="mt-4 space-y-3">
+            <p className="text-xs font-bold text-cyber-darkGreen dark:text-cyber-green uppercase flex items-center gap-2"><Zap size={14} /> Rapid Prototype Lab (Vibe-Coded)</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {RAPID_PROTOTYPES.map(rp => (
+                <a key={rp.name} href={rp.link} target="_blank" className="block p-3 border border-black/5 dark:border-white/5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-white/5 transition-colors group">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-[11px] font-bold text-cyan-700 dark:text-cyber-cyan">{rp.name}</span>
+                    <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <p className="text-[9px] text-slate-500 dark:text-white/40">{rp.desc}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        );
+        break;
+      case 'mission':
+        addOutput(<MissionHUD />);
+        break;
+      case 'resume':
+        addOutput(
+          <div className="mt-4 space-y-6 max-w-3xl border border-black/5 dark:border-white/10 p-5 rounded-xl glass">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <h3 className="text-sm font-bold text-cyber-darkPurple dark:text-cyber-purple flex items-center gap-2 uppercase tracking-widest">
+                <FileText size={16} /> Professional Resume
+              </h3>
+              <a 
+                href={RESUME_DATA.link} 
+                target="_blank" 
+                className="px-4 py-1.5 bg-cyan-600 dark:bg-cyber-cyan text-white dark:text-black font-bold text-[10px] rounded-lg hover:opacity-80 transition-opacity flex items-center gap-2 w-fit uppercase"
+              >
+                Download PDF <ExternalLink size={12} />
+              </a>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <p className="text-[11px] font-bold text-slate-800 dark:text-white flex items-center gap-2 uppercase tracking-wider">
+                  <GraduationCap size={14} className="text-cyan-600 dark:text-cyber-cyan" /> Education
+                </p>
+                <div className="space-y-3">
+                  {RESUME_DATA.education.map((edu, i) => (
+                    <div key={i} className="border-l border-black/10 dark:border-white/10 pl-3">
+                      <p className="text-[10px] font-bold text-slate-900 dark:text-white">{edu.degree}</p>
+                      <p className="text-[9px] text-slate-500 dark:text-white/60">{edu.institution}</p>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-[8px] text-cyan-700 dark:text-cyber-cyan font-bold">{edu.duration}</span>
+                        <span className="text-[8px] font-bold text-cyber-darkGreen dark:text-cyber-green">{edu.score}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-[11px] font-bold text-slate-800 dark:text-white flex items-center gap-2 uppercase tracking-wider">
+                  <Award size={14} className="text-amber-600 dark:text-cyber-amber" /> Achievements
+                </p>
+                <div className="space-y-2">
+                  {RESUME_DATA.achievements.map((ach, i) => (
+                    <div key={i} className="flex gap-2 text-[9px] text-slate-600 dark:text-white/70">
+                      <span className="text-amber-600 dark:text-cyber-amber">•</span>
+                      <span>{ach}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <p className="text-[11px] font-bold text-slate-800 dark:text-white flex items-center gap-2 uppercase tracking-wider mt-4">
+                  <Briefcase size={14} className="text-cyber-darkPurple dark:text-cyber-purple" /> Leadership
+                </p>
+                <div className="space-y-2">
+                  {RESUME_DATA.responsibilities.map((resp, i) => (
+                    <div key={i} className="flex gap-2 text-[9px] text-slate-600 dark:text-white/70">
+                      <span className="text-cyber-darkPurple dark:text-cyber-purple">•</span>
+                      <span>{resp}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+        break;
+      case 'skills':
+        addOutput(
+          <div className="mt-4 space-y-4">
+            <div>
+              <p className="text-xs font-bold text-cyber-darkAmber dark:text-cyber-amber mb-2 uppercase tracking-widest">AI / ML Expertise:</p>
+              <div className="flex flex-wrap gap-2">
+                {['Deep Learning', 'CNNs', 'GANs', 'Multimodal Learning', 'Emotion Recognition'].map(s => (
+                  <span key={s} className="px-2 py-1 text-[9px] border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 rounded-md text-slate-700 dark:text-slate-300 font-medium">{s}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-bold text-cyan-600 dark:text-cyber-cyan mb-2 uppercase tracking-widest">Voice & Agent Intelligence:</p>
+              <div className="flex flex-wrap gap-2">
+                {['LiveKit', 'Gemini', 'LangChain', 'Deepgram', 'Agentic Workflows'].map(s => (
+                  <span key={s} className="px-2 py-1 text-[9px] border border-cyan-500/20 dark:border-cyber-cyan/20 bg-cyan-500/5 dark:bg-cyber-cyan/5 rounded-md text-slate-700 dark:text-slate-300 font-medium">{s}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+        break;
+      case 'contact':
+        addOutput(
+          <div className="flex flex-col gap-3 mt-4">
+            <a href={SOCIALS.linkedin} target="_blank" className="flex items-center gap-3 group">
+              <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-[#0077b5] transition-colors"><Linkedin size={14} className="text-slate-600 dark:text-white/40 group-hover:text-[#0077b5]" /></div>
+              <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ LINKEDIN_PROFILE ]</span>
+            </a>
+            <a href={SOCIALS.github} target="_blank" className="flex items-center gap-3 group">
+              <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-slate-900 dark:group-hover:border-white transition-colors"><Github size={14} className="text-slate-600 dark:text-white/40 group-hover:text-slate-900 dark:group-hover:text-white" /></div>
+              <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ GITHUB_REPOSITORY ]</span>
+            </a>
+            <a href={SOCIALS.x} target="_blank" className="flex items-center gap-3 group">
+              <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-[#1DA1F2] transition-colors"><Twitter size={14} className="text-slate-600 dark:text-white/40 group-hover:text-[#1DA1F2]" /></div>
+              <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ X_BROADCAST ]</span>
+            </a>
+          </div>
+        );
+        break;
+      case 'clear':
+        setHistory([]);
+        break;
+      default:
+        addOutput(`Unknown instruction: ${trimmed}. Access "help" for a list of valid commands.`, 'error');
+    }
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleCommand(input);
+      setInput('');
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      const match = COMMANDS.find(c => c.startsWith(input.toLowerCase()));
+      if (match) setInput(match);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (historyQueue.length > 0) {
+        const nextIndex = historyIndex + 1;
+        if (nextIndex < historyQueue.length) {
+          setHistoryIndex(nextIndex);
+          setInput(historyQueue[nextIndex]);
+        }
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIndex > 0) {
+        const nextIndex = historyIndex - 1;
+        setHistoryIndex(nextIndex);
+        setInput(historyQueue[nextIndex]);
+      } else {
+        setHistoryIndex(-1);
+        setInput('');
+      }
+    }
+  };
+
+  return (
+    <div 
+      className="flex-1 overflow-y-auto p-6 flex flex-col gap-2 font-mono scroll-smooth"
+      ref={scrollRef}
+      onClick={() => inputRef.current?.focus()}
+    >
+      <div className="flex flex-col gap-2">
+        {history.map((line) => (
+          <motion.div
+            key={line.id}
+            initial={{ opacity: 0, x: -5 }}
+            animate={{ opacity: 1, x: 0 }}
+            className={`text-xs md:text-sm ${
+              line.type === 'error' ? 'text-rose-600 font-bold' :
+              line.type === 'success' ? 'text-cyber-darkGreen dark:text-cyber-green font-bold' :
+              line.type === 'command' ? 'text-cyan-700 dark:text-cyber-cyan font-bold' :
+              'text-slate-700 dark:text-white/90'
+            }`}
+          >
+            {line.content}
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-2 mt-auto pt-6 border-t border-black/5 dark:border-white/5">
+        <span className="text-cyan-700 dark:text-cyber-cyan font-bold shrink-0">parth@neural-node:~$</span>
+        <input
+          ref={inputRef}
+          autoFocus
+          className="bg-transparent border-none outline-none flex-1 text-slate-900 dark:text-white text-xs md:text-sm selection:bg-cyan-500/20 dark:selection:bg-cyber-cyan/30 min-w-0"
+          spellCheck={false}
+          autoComplete="off"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={onKeyDown}
+        />
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        <span className="text-[10px] text-slate-400 dark:text-white/30 uppercase font-bold tracking-widest mr-2">Neural Suggestions:</span>
+        {['about', 'projects', 'vibe-coded', 'mission', 'resume'].map(q => (
+          <button 
+            key={q}
+            onClick={() => handleCommand(q)}
+            className="text-[10px] px-2 py-1 border border-black/10 dark:border-white/10 rounded-md hover:border-cyan-500 hover:text-cyan-700 dark:hover:border-cyber-cyan dark:hover:text-cyber-cyan transition-all text-slate-600 dark:text-white/60 bg-white/50 dark:bg-white/5 backdrop-blur-sm shadow-sm font-bold uppercase tracking-tighter"
+          >
+            {q}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Terminal;
