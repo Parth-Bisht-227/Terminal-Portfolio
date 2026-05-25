@@ -39,8 +39,8 @@ const App: React.FC = () => {
 
   return (
     <div className="relative h-screen w-screen bg-slate-50 dark:bg-[#050505] text-slate-900 dark:text-white overflow-hidden selection:bg-[#00F0FF33] selection:text-[#00F0FF] transition-colors duration-300">
-      {/* Aurora Shader Background */}
-      <AnimatedShaderBackground />
+      {/* Aurora Shader Background
+      <AnimatedShaderBackground /> */}
 
       {/* Mesh Gradients */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vh] bg-gradient-to-bl from-[#00F0FF08] to-transparent pointer-events-none z-0" />
@@ -110,3 +110,19 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+// export default function App() {
+//   return (
+//     <div style={{
+//       background: "black",
+//       color: "white",
+//       height: "100vh",
+//       display: "flex",
+//       alignItems: "center",
+//       justifyContent: "center",
+//       fontSize: "2rem"
+//     }}>
+//       APP WORKING
+//     </div>
+//   );
+// }
