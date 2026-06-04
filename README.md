@@ -27,7 +27,7 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 | `projects`    | Show featured projects                      |
 | `skills`      | View skill breakdown                        |
 | `mission`     | Open the Mission HUD panel                  |
-| `vibe-coded`  | List rapid prototypes and side experiments   |
+| `vibe-coded`  | List rapid prototypes and side experiments  |
 | `contact`     | Show social links and contact info          |
 | `resume`      | Get link to the latest resume               |
 | `clear`       | Clear the terminal output                   |
@@ -53,11 +53,11 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 npm install
 
 # Set your Gemini API key (optional, for AI features)
-# Edit .env.local and add:
+# Make a copy of .env.local and add:
 # GEMINI_API_KEY=your_key_here
 
 # Start the development server
-npm run dev        # → localhost:3000
+npm run dev        # → http://localhost:3000
 
 # Build for production
 npm run build
@@ -85,10 +85,59 @@ npm run preview
 └── package.json
 ```
 
+## Deploy to Vercel
+
+This project is a static Vite + React app and can be deployed to Vercel in minutes.
+
+### One-Click Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Parth-Bisht-227/Terminal-Portfolio)
+
+### Manual Deploy
+
+1. **Push to GitHub** (if not already done):
+
+   ```bash
+   git push origin main
+   ```
+
+2. **Import on Vercel:**
+
+   - Go to [vercel.com/new](https://vercel.com/new)
+   - Import your GitHub repository (`Parth-Bisht-227/Terminal-Portfolio`)
+   - Vercel will auto-detect Vite — no framework override needed
+
+3. **Configure environment variables** (optional):
+
+   | Variable         | Value                         |
+   |-----------------|-------------------------------|
+   | `GEMINI_API_KEY` | Your Gemini API key (if any)  |
+
+   Add this in your Vercel project dashboard under **Settings → Environment Variables**.
+
+4. **Deploy settings** (auto-detected, but verify):
+
+   | Setting          | Value            |
+   |-----------------|------------------|
+   | Framework Preset | Vite             |
+   | Build Command    | `npm run build`  |
+   | Output Directory | `dist`           |
+   | Install Command  | `npm install`    |
+
+5. **Click Deploy** — Vercel will build and publish your site in under a minute.
+
+   Your site will be live at `https://terminal-portfolio.vercel.app` (custom domain configurable in Vercel dashboard).
+
+### Post-Deploy
+
+- Push to `main` → Vercel auto-redeploys
+- Add a custom domain under **Settings → Domains**
+- Monitor deployments under the **Deployments** tab
+
 ## Links
 
 - [GitHub](https://github.com/Parth-Bisht-227)
-- [LinkedIn](https://www.linkedin.com/in/parth-bisht-088480282/)
+- [LinkedIn](https://www.linkedin.com/in/parth-bisht-082280282/)
 - [X / Twitter](https://x.com/Parth_Bisht_227)
 - [DEV.to](https://dev.to/parth_bisht227)
 - [Resume](https://drive.google.com/file/d/1fy81FhrcehDNQOeu_XMDbI-QM6DNgJ12/view)
