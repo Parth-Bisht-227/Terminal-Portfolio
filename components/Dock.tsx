@@ -43,8 +43,9 @@ const Dock: React.FC = () => {
             key={item.label}
             whileHover={{ scale: 1.08, y: -4 }}
             whileTap={{ scale: 0.9 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             onClick={() => sendCommand(item.cmd)}
-            className="group relative w-[40px] h-[40px] md:w-12 md:h-12 flex items-center justify-center rounded-xl md:rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-all shadow-sm shrink-0"
+            className="group relative w-[40px] h-[40px] md:w-12 md:h-12 flex items-center justify-center rounded-xl md:rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-colors shadow-sm shrink-0"
             title={item.label}
           >
             <item.icon className="w-[18px] h-[18px] md:w-5 md:h-5" style={{ color: item.darkColor }} />
@@ -58,6 +59,7 @@ const Dock: React.FC = () => {
         <motion.button
           whileHover={{ scale: 1.08, y: -4 }}
           whileTap={{ scale: 0.9 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           onClick={() => sendCommand('help')} 
           className="group relative w-[40px] h-[40px] md:w-12 md:h-12 flex items-center justify-center rounded-xl md:rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan shadow-sm shrink-0"
           title="Help"
