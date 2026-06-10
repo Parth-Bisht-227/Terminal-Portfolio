@@ -6,7 +6,7 @@ import { TerminalLine } from '../types';
 import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, COLORS, SOCIALS, RESUME_DATA } from '../constants';
 import MissionHUD from './MissionHUD';
 
-const COMMANDS = ['help', 'about', 'projects', 'vibe-coded', 'mission', 'skills', 'contact', 'resume', 'clear'];
+const COMMANDS = ['help', 'about', 'experience', 'projects', 'vibe-coded', 'mission', 'skills', 'contact', 'resume', 'clear'];
 
 const Terminal: React.FC = () => {
   const [input, setInput] = useState('');
@@ -18,7 +18,7 @@ const Terminal: React.FC = () => {
 
   useEffect(() => {
     const sequence = async () => {
-      addOutput(<div className="mb-4"><p className="text-xl font-bold shimmer">{SYSTEM_DATA.headline}</p><p className="text-xs text-slate-500 dark:text-white/50">{SYSTEM_DATA.subtext}</p></div>);
+      addOutput(<div className="mb-4"><p className="text-sm md:text-xl font-bold shimmer">{SYSTEM_DATA.headline}</p><p className="text-[10px] md:text-xs text-slate-500 dark:text-white/50">{SYSTEM_DATA.subtext}</p></div>);
       for (let i = 0; i < SYSTEM_DATA.bootSequence.length; i++) {
         await new Promise(r => setTimeout(r, 200));
         addOutput(SYSTEM_DATA.bootSequence[i], 'success');
@@ -131,6 +131,56 @@ const Terminal: React.FC = () => {
         break;
       case 'mission':
         addOutput(<MissionHUD />);
+        break;
+      case 'experience':
+      case 'exp':
+        addOutput(
+          <div className="space-y-4 mt-2 border-l-2 border-cyan-600 dark:border-cyber-cyan pl-4 max-w-2xl">
+            <div>
+              <p className="text-xs font-bold text-cyan-600 dark:text-cyber-cyan tracking-widest uppercase">EXPERIENCE</p>
+              <div className="text-[10px] text-slate-400 dark:text-white/20 select-none font-bold">----------</div>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <p className="text-xs font-bold text-slate-900 dark:text-white leading-relaxed">
+                  Stealth Startup (US-based) | AI Engineering Intern, Founding Team | <span className="text-cyan-700 dark:text-cyber-cyan">Feb 2026 - Present</span>
+                </p>
+                <div className="space-y-1.5 mt-1">
+                  {[
+                    'Built the first version of a Voice AI agent for restaurant POS workflows (LiveKit, Deepgram, Twilio, MongoDB)',
+                    'Designed STT > LLM > TTS pipeline supporting Claude, GPT, and Gemini backends',
+                    'Integrated Twilio for end-to-end inbound calling workflows',
+                    'Collaborated with CTO on architectural redesign — improved agent performance, conversation flow, and token efficiency',
+                    'Currently maintaining system: debugging, prompt refinement, agent behavior fixes'
+                  ].map((bullet, i) => (
+                    <div key={i} className="flex gap-2 text-[10px] text-slate-600 dark:text-white/70 leading-relaxed">
+                      <span className="text-cyan-600 dark:text-cyber-cyan">-</span>
+                      <span>{bullet}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs font-bold text-slate-900 dark:text-white leading-relaxed">
+                  EleAndI | AI & Backend Contributor | <span className="text-cyber-darkPurple dark:text-cyber-purple">May 2026 - Present</span>
+                </p>
+                <div className="space-y-1.5 mt-1">
+                  {[
+                    'Contributing to an AI-native entertainment experiences platform',
+                    'Focused on Django backend systems as the product scales from 0 to 1'
+                  ].map((bullet, i) => (
+                    <div key={i} className="flex gap-2 text-[10px] text-slate-600 dark:text-white/70 leading-relaxed">
+                      <span className="text-cyber-darkPurple dark:text-cyber-purple">-</span>
+                      <span>{bullet}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
         break;
       case 'resume':
         addOutput(
@@ -276,7 +326,7 @@ const Terminal: React.FC = () => {
 
   return (
     <div 
-      className="flex-1 overflow-y-auto p-6 flex flex-col gap-2 font-mono scroll-smooth"
+      className="flex-1 overflow-y-auto px-2 py-4 md:p-6 flex flex-col gap-2 font-mono scroll-smooth"
       ref={scrollRef}
       onClick={() => inputRef.current?.focus()}
     >
@@ -314,7 +364,7 @@ const Terminal: React.FC = () => {
 
       <div className="mt-4 flex flex-wrap gap-2">
         <span className="text-[10px] text-slate-400 dark:text-white/30 uppercase font-bold tracking-widest mr-2">Neural Suggestions:</span>
-        {['about', 'projects', 'vibe-coded', 'mission', 'resume'].map(q => (
+        {['about', 'experience', 'projects', 'vibe-coded', 'mission', 'resume'].map(q => (
           <button 
             key={q}
             onClick={() => handleCommand(q)}

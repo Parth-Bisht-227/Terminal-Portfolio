@@ -53,7 +53,7 @@ const App: React.FC = () => {
 
       <StatusBar theme={theme} toggleTheme={toggleTheme} />
 
-      <main className="relative z-10 h-full w-full flex flex-col items-center justify-center p-4 md:p-8 pt-20">
+      <main className="relative z-10 h-full w-full flex flex-col items-center justify-center px-2 py-4 md:p-8 pt-20">
         <AnimatePresence>
           {!isBooted ? (
             <motion.div 

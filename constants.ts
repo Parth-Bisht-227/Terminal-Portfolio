@@ -16,7 +16,7 @@ export const RESUME_DATA = {
       degree: 'B.Tech in Information Technology',
       institution: 'Delhi Technological University, New Delhi',
       duration: '2023-2027',
-      score: '8.536 / 10 (Up to 4th Sem)'
+      score: '8.42 / 10'
     },
     {
       degree: 'CBSE (Class XII)',
@@ -32,56 +32,50 @@ export const RESUME_DATA = {
     }
   ],
   achievements: [
-    'Finalist – HackWithIndia 2024 (Top 40 Teams out of 3000+)',
+    '7th Place – NMG Labs Forge Sprint (Claude Code Edition), 99.1% SEO detection accuracy (June 2026)',
+    'Finalist – HackWithIndia 2024 (Top 40 / 3000+ teams)',
     'Finalist – ImaGenAI, IIT Delhi (Tryst\'25)',
-    'Recognized Developer – 4K+ reach on X & DEV for Runner H AI Agent'
+    'Recognized Developer – 4K+ reach on X & DEV for AI Agent project (2025)'
   ],
   responsibilities: [
-    'Head – Technical Affairs, IEEE DTU (Mentored 30+ juniors in GenAI)',
-    'Joint Secretary – STEP DTU (Organized flagship events, 80+ students)'
+    'Project Lead – MentorLink, STEP DTU (guided mentors impacting 300-500 students)',
+    'Joint Secretary – STEP DTU (organized Hyderabad Retreat 2025, 80+ participants)',
+    'Head – Technical Affairs, IEEE DTU (mentored 30+ students in GenAI)'
   ]
 };
 
 export const PROJECTS: Project[] = [
   {
-    id: 'manga-01',
+    id: 'manga-02',
     name: 'Manga-Splasher',
     role: 'Lead Developer',
-    tech: ['TensorFlow', 'Keras', 'GANs', 'U-Net', 'Streamlit'],
-    description: 'A Pix2Pix GAN-based system that automatically colorizes black-and-white manga panels. Designed custom U-Net architecture.',
+    tech: ['TensorFlow', 'Pix2Pix GAN', 'U-Net', 'Streamlit'],
+    description: 'Pix2Pix GAN with custom U-Net architecture that colorizes B&W manga panels in real time. Built and deployed end to end on Streamlit.',
     link: 'https://manga-splasher.streamlit.app/'
   },
   {
-    id: 'voice-02',
-    name: 'Real-Time Agentic Voice System',
+    id: 'voice-01',
+    name: 'Real-Time Agentic Voice Suite',
     role: 'Solo Developer',
-    tech: ['LiveKit', 'Python', 'Gemini', 'Deepgram', 'SQLite'],
-    description: 'Built 10 autonomous voice agents capable of real-time interaction with persona management and function calling.',
+    tech: ['LiveKit', 'Deepgram', 'Murf', 'Python', 'SQLite'],
+    description: '10-day solo challenge: built 10 domain-specific autonomous voice agents. Highlights: multi-agent handoff system with 4 specialized personas (Active Recall Tutor) and an SDR qualification agent with live lead persistence.',
     link: 'https://github.com/Parth-Bisht-227/voice-agent-murf-falcon-10-day-challenge'
-  },
-  {
-    id: 'emo-03',
-    name: 'Multimodal Emotion Recognition',
-    role: 'Co-Developer & System Integrator',
-    tech: ['TensorFlow', 'Keras', 'OpenCV', 'Librosa'],
-    description: 'Real-time classification system combining facial features and audio signals using late fusion logic.',
-    link: 'https://github.com/Parth-Bisht-227/multimodal-emotion-recognition'
   }
 ];
 
 export const RAPID_PROTOTYPES = [
-  { name: 'Sharp AI', desc: 'AI-based content/idea system built using modern AI tools.', link: 'https://ai.studio/apps/drive/15K3-vRDVv0YeiaNnJ0a0X-VkeymKnx_8?fullscreenApplet=true' },
+  { name: 'Sharp AI', desc: 'Facial geometry analysis tool that recommends hairstyles and beard combos for men, with AI-generated visual previews.', link: 'https://ai.studio/apps/drive/15K3-vRDVv0YeiaNnJ0a0X-VkeymKnx_8?fullscreenApplet=true' },
   { name: 'Splashify', desc: 'Interactive music experience with dynamic color-splash cursor.', link: 'https://splashifyyy.netlify.app/' },
-  { name: 'Talk2Me AI', desc: 'Voice AI companion built using Vapi and simple frontend.', link: 'https://talk2me-ai.netlify.app/' }
+  { name: 'Talk2Me AI', desc: 'Voice AI companion built with Vapi — one of my first voice agent builds.', link: 'https://talk2me-ai.netlify.app/' }
 ];
 
 export const SKILLS = [
-  { name: 'Transformers & Attention', level: 72 },
-  { name: 'LLM Foundations', level: 88 },
   { name: 'Voice AI Systems', level: 84 },
-  { name: 'RAG & Vector DBs', level: 76 },
-  { name: 'Agentic Frameworks', level: 65 },
-  { name: 'Deep Learning (GANs/CNNs)', level: 80 }
+  { name: 'LLM Agents & Function Calling', level: 82 },
+  { name: 'Prompt Engineering', level: 85 },
+  { name: 'RAG & Vector DBs', level: 72 },
+  { name: 'Deep Learning (GANs/CNNs)', level: 78 },
+  { name: 'Transformers & Attention', level: 70 }
 ];
 
 export const SOCIALS = {
@@ -94,10 +88,10 @@ export const SOCIALS = {
 export const SYSTEM_DATA = {
   user: 'Parth',
   location: 'Delhi, IN',
-  target: 'Japan 2026',
+  target: 'US Startup 2026',
   health: 'Optimal',
-  headline: 'Aspiring AI Engineer | GenAI • Voice AI • Intelligent Systems',
-  subtext: 'IT student at DTU building practical AI applications in computer vision, generative models, and voice AI.',
+  headline: 'Voice AI Builder | LLM Agents & Real-Time Systems',
+  subtext: "Founding team @ US stealth startup. Building voice AI that actually ships. DTU '27.",
   bootSequence: [
     'Initializing Neural Kernels...',
     'Mounting DTU_IT_NODE_2027...',

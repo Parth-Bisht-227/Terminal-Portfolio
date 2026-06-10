@@ -19,36 +19,54 @@ const Dock: React.FC = () => {
 
   return (
     <motion.div 
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[110]"
+      initial={{ y: 100, x: '-50%' }}
+      animate={{ y: 0, x: '-50%' }}
+      style={{
+        position: 'fixed',
+        bottom: '16px',
+        left: '50%',
+        zIndex: 50,
+      }}
     >
-      <div className="flex items-center gap-2.5 p-2.5 glass rounded-[2.5rem] shadow-2xl">
+      <div 
+        style={{
+          background: 'rgba(5, 5, 5, 0.8)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          borderRadius: '999px',
+          padding: '8px 16px',
+        }}
+        className="flex items-center gap-1.5 md:gap-2.5 shadow-2xl max-w-[95vw] overflow-x-auto scrollbar-hide border border-white/10"
+      >
         {items.map((item, idx) => (
           <motion.button
             key={item.label}
-            whileHover={{ scale: 1.15, y: -8 }}
+            whileHover={{ scale: 1.08, y: -4 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => sendCommand(item.cmd)}
-            className="group relative w-12 h-12 flex items-center justify-center rounded-2xl bg-slate-50 dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-black/20 dark:hover:border-white/30 transition-all shadow-sm"
+            className="group relative w-[40px] h-[40px] md:w-12 md:h-12 flex items-center justify-center rounded-xl md:rounded-2xl bg-white/5 border border-white/10 hover:border-white/30 transition-all shadow-sm shrink-0"
             title={item.label}
           >
-            <item.icon size={20} className="dark:hidden" style={{ color: item.lightColor }} />
-            <item.icon size={20} className="hidden dark:block" style={{ color: item.darkColor }} />
+            <item.icon className="w-[18px] h-[18px] md:w-5 md:h-5" style={{ color: item.darkColor }} />
             
             <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-2.5 py-1.5 bg-slate-900 text-[10px] font-bold text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all scale-75 group-hover:scale-100 pointer-events-none whitespace-nowrap shadow-lg">
               {item.label}
             </div>
           </motion.button>
         ))}
-        <div className="w-px h-8 bg-black/10 dark:bg-white/10 mx-1" />
+        <div className="w-px h-6 md:h-8 bg-white/10 mx-0.5 md:mx-1 shrink-0" />
         <motion.button
-          whileHover={{ scale: 1.15 }}
+          whileHover={{ scale: 1.08, y: -4 }}
           whileTap={{ scale: 0.9 }}
-          onClick={() => sendCommand('')} 
-          className="w-12 h-12 flex items-center justify-center rounded-2xl bg-cyan-600/10 dark:bg-cyber-cyan/10 border border-cyan-600/20 dark:border-cyber-cyan/30 text-cyan-700 dark:text-cyber-cyan shadow-sm"
+          onClick={() => sendCommand('help')} 
+          className="group relative w-[40px] h-[40px] md:w-12 md:h-12 flex items-center justify-center rounded-xl md:rounded-2xl bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan shadow-sm shrink-0"
+          title="Help"
         >
-          <TerminalIcon size={20} />
+          <TerminalIcon className="w-[18px] h-[18px] md:w-5 md:h-5" />
+          
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-2.5 py-1.5 bg-slate-900 text-[10px] font-bold text-white rounded-lg opacity-0 group-hover:opacity-100 transition-all scale-75 group-hover:scale-100 pointer-events-none whitespace-nowrap shadow-lg">
+            Help
+          </div>
         </motion.button>
       </div>
     </motion.div>
