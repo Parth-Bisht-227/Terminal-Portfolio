@@ -17,8 +17,8 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Simulate boot time
-    const timer = setTimeout(() => setIsBooted(true), 2000);
+    // Simulate boot time (aligned with loader animation duration)
+    const timer = setTimeout(() => setIsBooted(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -32,11 +32,10 @@ const App: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-[50vw] h-[50vh] bg-gradient-to-tr from-[#BC13FE08] to-transparent pointer-events-none z-0" />
       
 
-
-      <StatusBar />
+      {isBooted && <StatusBar />}
 
       <main className="relative z-10 h-full w-full flex flex-col items-center justify-center px-2 py-4 md:p-8 pt-20">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {!isBooted ? (
             <motion.div 
               key="loader"
@@ -83,7 +82,7 @@ const App: React.FC = () => {
       </main>
 
       {/* Dock for Quick Navigation */}
-      <Dock />
+      {isBooted && <Dock />}
 
       {/* Scanline Effect Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />

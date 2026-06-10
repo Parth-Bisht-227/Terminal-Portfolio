@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { User, MapPin, Target, Activity, ShieldCheck, Terminal } from 'lucide-react';
 import { SYSTEM_DATA, COLORS } from '../constants';
 
@@ -19,7 +20,12 @@ const StatusBar: React.FC = () => {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-10 border-b border-white/10 bg-[#050505]/95 z-[100] flex items-center justify-between px-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <motion.header 
+      initial={{ y: -40 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="fixed top-0 left-0 right-0 h-10 border-b border-white/10 bg-[#050505]/95 z-[100] flex items-center justify-between px-2 overflow-x-auto whitespace-nowrap scrollbar-hide"
+    >
       <div className="flex items-center h-full">
         <div className="flex items-center gap-2 px-4 border-r border-white/10 h-full select-none">
           <Terminal size={14} className="text-cyber-cyan" />
@@ -40,7 +46,7 @@ const StatusBar: React.FC = () => {
           {time}
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
