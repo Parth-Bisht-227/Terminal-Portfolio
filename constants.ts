@@ -70,12 +70,10 @@ export const RAPID_PROTOTYPES = [
 ];
 
 export const SKILLS = [
-  { name: 'Voice AI Systems', level: 84 },
-  { name: 'LLM Agents & Function Calling', level: 82 },
-  { name: 'Prompt Engineering', level: 85 },
-  { name: 'RAG & Vector DBs', level: 72 },
-  { name: 'Deep Learning (GANs/CNNs)', level: 78 },
-  { name: 'Transformers & Attention', level: 70 }
+  { category: 'VOICE AI SYSTEMS', skills: ['LiveKit', 'Deepgram', 'Twilio', 'Vapi', 'Murf', 'STT/TTS Pipelines', 'Agent Handoff'] },
+  { category: 'AI / ML & LLMS', skills: ['LLM Agents', 'Prompt Engineering', 'Function Calling', 'RAG', 'PyTorch', 'TensorFlow', 'GANs'] },
+  { category: 'BACKEND & DB', skills: ['Python', 'Django', 'MongoDB', 'SQLite', 'SQL'] },
+  { category: 'TOOLS & WORKFLOW', skills: ['Claude Code', 'AI Coding Agents', 'Git', 'Streamlit'] }
 ];
 
 export const SOCIALS = {

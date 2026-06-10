@@ -23,19 +23,13 @@ const MissionHUD: React.FC = () => {
             <Cpu size={14} className="text-cyan-600 dark:text-cyber-cyan" /> Learning Focus
           </h3>
           <div className="space-y-3">
-            {SKILLS.map((skill) => (
-              <div key={skill.name} className="space-y-1.5">
-                <div className="flex justify-between text-[10px] font-bold">
-                  <span className="text-slate-600 dark:text-white/70">{skill.name}</span>
-                  <span className="text-cyan-600 dark:text-cyber-cyan">{skill.level}%</span>
-                </div>
-                <div className="h-1.5 bg-black/5 dark:bg-white/10 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1.2, delay: 0.2, ease: "circOut" }}
-                    className="h-full bg-gradient-to-r from-cyan-600 to-cyber-darkPurple dark:from-cyber-cyan dark:to-cyber-purple shadow-[0_0_8px_rgba(0,240,255,0.2)]"
-                  />
+            {SKILLS.map((cat) => (
+              <div key={cat.category} className="space-y-1.5">
+                <p className="text-[10px] font-bold text-slate-800 dark:text-white flex items-center gap-1 uppercase tracking-wider">{cat.category}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.skills.map((skill) => (
+                    <span key={skill} className="text-[8px] px-1.5 py-0.5 rounded border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 text-slate-700 dark:text-white/80">{skill}</span>
+                  ))}
                 </div>
               </div>
             ))}

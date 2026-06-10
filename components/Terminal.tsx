@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal as TerminalIcon, ChevronRight, HelpCircle, ExternalLink, Code2, Zap, Github, Linkedin, Twitter, BookOpen, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
 import { TerminalLine } from '../types';
-import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, COLORS, SOCIALS, RESUME_DATA } from '../constants';
+import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, COLORS, SOCIALS, RESUME_DATA, SKILLS } from '../constants';
 import MissionHUD from './MissionHUD';
 
 const COMMANDS = ['help', 'about', 'experience', 'projects', 'vibe-coded', 'mission', 'skills', 'contact', 'resume', 'clear'];
@@ -184,7 +184,7 @@ const Terminal: React.FC = () => {
         break;
       case 'resume':
         addOutput(
-          <div className="mt-4 space-y-6 max-w-3xl border border-black/5 dark:border-white/10 p-5 rounded-xl glass">
+          <div className="mt-4 space-y-6 max-w-3xl border border-black/5 dark:border-white/10 p-5 rounded-xl bg-slate-100/50 dark:bg-white/5">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <h3 className="text-sm font-bold text-cyber-darkPurple dark:text-cyber-purple flex items-center gap-2 uppercase tracking-widest">
                 <FileText size={16} /> Professional Resume
@@ -248,23 +248,17 @@ const Terminal: React.FC = () => {
         break;
       case 'skills':
         addOutput(
-          <div className="mt-4 space-y-4">
-            <div>
-              <p className="text-xs font-bold text-cyber-darkAmber dark:text-cyber-amber mb-2 uppercase tracking-widest">AI / ML Expertise:</p>
-              <div className="flex flex-wrap gap-2">
-                {['Deep Learning', 'CNNs', 'GANs', 'Multimodal Learning', 'Emotion Recognition'].map(s => (
-                  <span key={s} className="px-2 py-1 text-[9px] border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 rounded-md text-slate-700 dark:text-slate-300 font-medium">{s}</span>
-                ))}
+          <div className="mt-4 space-y-4 max-w-2xl">
+            {SKILLS.map((cat) => (
+              <div key={cat.category} className="space-y-2">
+                <p className="text-xs font-bold text-cyan-600 dark:text-cyber-cyan uppercase tracking-widest">{cat.category}:</p>
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map(s => (
+                    <span key={s} className="px-2 py-1 text-[9px] border border-cyan-500/20 dark:border-cyber-cyan/20 bg-cyan-500/5 dark:bg-cyber-cyan/5 rounded-md text-slate-700 dark:text-slate-300 font-medium">{s}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div>
-              <p className="text-xs font-bold text-cyan-600 dark:text-cyber-cyan mb-2 uppercase tracking-widest">Voice & Agent Intelligence:</p>
-              <div className="flex flex-wrap gap-2">
-                {['LiveKit', 'Gemini', 'LangChain', 'Deepgram', 'Agentic Workflows'].map(s => (
-                  <span key={s} className="px-2 py-1 text-[9px] border border-cyan-500/20 dark:border-cyber-cyan/20 bg-cyan-500/5 dark:bg-cyber-cyan/5 rounded-md text-slate-700 dark:text-slate-300 font-medium">{s}</span>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         );
         break;

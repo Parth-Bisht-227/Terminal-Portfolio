@@ -3,29 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import StatusBar from './components/StatusBar';
 import Terminal from './components/Terminal';
-import NeuralNetwork from './components/NeuralNetwork';
-import AnimatedShaderBackground from './components/AnimatedShaderBackground';
+import MatrixRain from './components/MatrixRain';
 import Dock from './components/Dock';
 import { SYSTEM_DATA } from './constants';
 
 const App: React.FC = () => {
   const [isBooted, setIsBooted] = useState(false);
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    const saved = localStorage.getItem('theme');
-    return (saved as 'light' | 'dark') || 'dark';
-  });
 
   useEffect(() => {
-    // Apply theme to body
-    if (theme === 'dark') {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-    } else {
-      document.body.classList.remove('dark');
-      document.body.classList.add('light');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    // Force dark mode always
+    document.body.classList.add('dark');
+    document.body.classList.remove('light');
+  }, []);
 
   useEffect(() => {
     // Simulate boot time
@@ -33,25 +22,18 @@ const App: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
-
   return (
-    <div className="relative h-screen w-screen bg-slate-50 dark:bg-[#050505] text-slate-900 dark:text-white overflow-hidden selection:bg-[#00F0FF33] selection:text-[#00F0FF] transition-colors duration-300">
-      {/* Aurora Shader Background
-      <AnimatedShaderBackground /> */}
+    <div className="relative h-screen w-screen bg-[#050505] text-white overflow-hidden selection:bg-[#00F0FF33] selection:text-[#00F0FF] transition-colors duration-300">
+      {/* Matrix Rain Background */}
+      <MatrixRain />
 
       {/* Mesh Gradients */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vh] bg-gradient-to-bl from-[#00F0FF08] to-transparent pointer-events-none z-0" />
       <div className="absolute bottom-0 left-0 w-[50vw] h-[50vh] bg-gradient-to-tr from-[#BC13FE08] to-transparent pointer-events-none z-0" />
       
-      {/* Neural Network Visualization (Subtle Layer) */}
-      <div className="absolute inset-0 z-[1] opacity-20 pointer-events-none dark:opacity-20 opacity-40">
-        <NeuralNetwork />
-      </div>
 
-      <StatusBar theme={theme} toggleTheme={toggleTheme} />
+
+      <StatusBar />
 
       <main className="relative z-10 h-full w-full flex flex-col items-center justify-center px-2 py-4 md:p-8 pt-20">
         <AnimatePresence>
@@ -78,7 +60,7 @@ const App: React.FC = () => {
               key="terminal"
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              className="w-full max-w-5xl h-[75vh] glass rounded-xl overflow-hidden shadow-2xl flex flex-col animate-float"
+              className="w-full max-w-5xl h-[75vh] bg-white/90 dark:bg-[#0a0a0a]/90 border border-black/5 dark:border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col animate-float relative z-10"
             >
               {/* Terminal Window Header */}
               <div className="flex items-center justify-between px-4 py-2 border-b border-black/5 dark:border-white/10 bg-black/5 dark:bg-black/40">
