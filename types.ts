@@ -3,10 +3,12 @@ import React from 'react';
 export interface Project {
   id: string;
   name: string;
-  role: string;
   tech: string[];
-  description: string;
-  link?: string;
+  highlights: string[];
+  links: Array<{
+    label: string;
+    href: string;
+  }>;
 }
 
 export interface TerminalLine {

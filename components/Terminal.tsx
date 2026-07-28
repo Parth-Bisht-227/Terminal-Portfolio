@@ -1,9 +1,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal as TerminalIcon, ChevronRight, HelpCircle, ExternalLink, Code2, Zap, Github, Linkedin, Twitter, BookOpen, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ChevronRight, ExternalLink, Code2, Zap, Github, Linkedin, Mail, Globe2, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
 import { TerminalLine } from '../types';
-import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, COLORS, SOCIALS, RESUME_DATA, SKILLS } from '../constants';
+import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, CONTACT, RESUME_DATA, SKILLS, EXPERIENCE } from '../constants';
 import MissionHUD from './MissionHUD';
 
 const COMMANDS = ['help', 'about', 'experience', 'projects', 'vibe-coded', 'mission', 'skills', 'contact', 'resume', 'clear'];
@@ -76,12 +76,10 @@ const Terminal: React.FC = () => {
           <div className="space-y-3 mt-2 border-l-2 border-cyber-darkPurple dark:border-cyber-purple pl-4 max-w-2xl">
             <p className="text-xs font-bold text-cyber-darkPurple dark:text-cyber-purple tracking-widest uppercase">Bio-Authentication Successful</p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              I’m an Information Technology undergraduate at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University (Batch of 2027)</span>. 
-              I focus on building end-to-end AI applications, combining deep learning models with real-time interfaces.
+              I am an Information Technology undergraduate at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University (2023 - 2027)</span> with a CGPA of 8.54/10.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              My interests lie in <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">Generative AI, Voice AI, and Agent-based systems</span>. 
-              I actively build experimental systems that interact naturally through vision, speech, and reasoning.
+              I currently work as an <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">AI Product Engineering Intern at Tsubasa Technologies</span>. Previously, I was an AI Engineering Intern on the founding team of a US-based stealth startup, where I built the initial functional version of a real-time Voice AI restaurant-ordering agent.
             </p>
           </div>
         );
@@ -96,16 +94,26 @@ const Terminal: React.FC = () => {
                   <Code2 size={14} className="text-slate-400 dark:text-white/20 group-hover:text-cyan-600 dark:group-hover:text-cyber-cyan" />
                 </div>
                 <h4 className="font-bold text-sm mb-1 text-slate-900 dark:text-white">{p.name}</h4>
-                <p className="text-[10px] text-slate-600 dark:text-white/70 mb-1 italic font-bold">{p.role}</p>
-                <p className="text-[10px] text-slate-500 dark:text-white/50 mb-3 leading-snug">{p.description}</p>
+                <div className="space-y-1.5 mb-3">
+                  {p.highlights.map((highlight) => (
+                    <div key={highlight} className="flex gap-2 text-[10px] text-slate-500 dark:text-white/50 leading-snug">
+                      <span className="text-cyan-600 dark:text-cyber-cyan">-</span>
+                      <span>{highlight}</span>
+                    </div>
+                  ))}
+                </div>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {p.tech.map(t => (
                     <span key={t} className="text-[8px] px-1.5 py-0.5 rounded border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 text-slate-700 dark:text-white/80">{t}</span>
                   ))}
                 </div>
-                <a href={p.link} target="_blank" className="text-[10px] font-bold text-cyber-darkGreen dark:text-cyber-green hover:underline flex items-center gap-1">
-                  [ EXECUTE_SOURCE ] <ExternalLink size={10} />
-                </a>
+                <div className="flex flex-wrap gap-3">
+                  {p.links.map((link) => (
+                    <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-cyber-darkGreen dark:text-cyber-green hover:underline flex items-center gap-1">
+                      [ {link.label.toUpperCase()} ] <ExternalLink size={10} />
+                    </a>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -116,13 +124,13 @@ const Terminal: React.FC = () => {
           <div className="mt-4 space-y-3">
             <p className="text-xs font-bold text-cyber-darkGreen dark:text-cyber-green uppercase flex items-center gap-2"><Zap size={14} /> Rapid Prototype Lab (Vibe-Coded)</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {RAPID_PROTOTYPES.map(rp => (
-                <a key={rp.name} href={rp.link} target="_blank" className="block p-3 border border-black/5 dark:border-white/5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-white/5 transition-colors group">
+              {RAPID_PROTOTYPES.map((prototype) => (
+                <a key={prototype.name} href={prototype.link} target="_blank" rel="noreferrer" className="block p-3 border border-black/5 dark:border-white/5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-white/5 transition-colors group">
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-[11px] font-bold text-cyan-700 dark:text-cyber-cyan">{rp.name}</span>
+                    <span className="text-[11px] font-bold text-cyan-700 dark:text-cyber-cyan">{prototype.name}</span>
                     <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <p className="text-[9px] text-slate-500 dark:text-white/40">{rp.desc}</p>
+                  <p className="text-[9px] text-slate-500 dark:text-white/40">{prototype.desc}</p>
                 </a>
               ))}
             </div>
@@ -140,44 +148,26 @@ const Terminal: React.FC = () => {
               <p className="text-xs font-bold text-cyan-600 dark:text-cyber-cyan tracking-widest uppercase">EXPERIENCE</p>
               <div className="text-[10px] text-slate-400 dark:text-white/20 select-none font-bold">----------</div>
             </div>
-            
             <div className="space-y-4">
-              <div>
-                <p className="text-xs font-bold text-slate-900 dark:text-white leading-relaxed">
-                  Stealth Startup (US-based) | AI Engineering Intern, Founding Team | <span className="text-cyan-700 dark:text-cyber-cyan">Feb 2026 - Present</span>
-                </p>
-                <div className="space-y-1.5 mt-1">
-                  {[
-                    'Built the first version of a Voice AI agent for restaurant POS workflows (LiveKit, Deepgram, Twilio, MongoDB)',
-                    'Designed STT > LLM > TTS pipeline supporting Claude, GPT, and Gemini backends',
-                    'Integrated Twilio for end-to-end inbound calling workflows',
-                    'Collaborated with CTO on architectural redesign — improved agent performance, conversation flow, and token efficiency',
-                    'Currently maintaining system: debugging, prompt refinement, agent behavior fixes'
-                  ].map((bullet, i) => (
-                    <div key={i} className="flex gap-2 text-[10px] text-slate-600 dark:text-white/70 leading-relaxed">
-                      <span className="text-cyan-600 dark:text-cyber-cyan">-</span>
-                      <span>{bullet}</span>
+              {EXPERIENCE.map((experience) => (
+                <div key={`${experience.company}-${experience.duration}`}>
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1">
+                    <div>
+                      <p className="text-xs font-bold text-slate-900 dark:text-white leading-relaxed">{experience.company}</p>
+                      <p className="text-[10px] italic text-slate-600 dark:text-white/70">{experience.role} | {experience.location}</p>
                     </div>
-                  ))}
+                    <span className="text-[10px] font-bold text-cyan-700 dark:text-cyber-cyan whitespace-nowrap">{experience.duration}</span>
+                  </div>
+                  <div className="space-y-1.5 mt-2">
+                    {experience.bullets.map((bullet) => (
+                      <div key={bullet} className="flex gap-2 text-[10px] text-slate-600 dark:text-white/70 leading-relaxed">
+                        <span className="text-cyan-600 dark:text-cyber-cyan">-</span>
+                        <span>{bullet}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              <div>
-                <p className="text-xs font-bold text-slate-900 dark:text-white leading-relaxed">
-                  EleAndI | AI & Backend Contributor | <span className="text-cyber-darkPurple dark:text-cyber-purple">May 2026 - Present</span>
-                </p>
-                <div className="space-y-1.5 mt-1">
-                  {[
-                    'Contributing to an AI-native entertainment experiences platform',
-                    'Focused on Django backend systems as the product scales from 0 to 1'
-                  ].map((bullet, i) => (
-                    <div key={i} className="flex gap-2 text-[10px] text-slate-600 dark:text-white/70 leading-relaxed">
-                      <span className="text-cyber-darkPurple dark:text-cyber-purple">-</span>
-                      <span>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         );
@@ -191,10 +181,10 @@ const Terminal: React.FC = () => {
               </h3>
               <a 
                 href={RESUME_DATA.link} 
-                target="_blank" 
+                download="Parth_Bisht_Resume.pdf"
                 className="px-4 py-1.5 bg-cyan-600 dark:bg-cyber-cyan text-white dark:text-black font-bold text-[10px] rounded-lg hover:opacity-80 transition-opacity flex items-center gap-2 w-fit uppercase"
               >
-                Download PDF <ExternalLink size={12} />
+                Download PDF <FileText size={12} />
               </a>
             </div>
 
@@ -224,7 +214,7 @@ const Terminal: React.FC = () => {
                 <div className="space-y-2">
                   {RESUME_DATA.achievements.map((ach, i) => (
                     <div key={i} className="flex gap-2 text-[9px] text-slate-600 dark:text-white/70">
-                      <span className="text-amber-600 dark:text-cyber-amber">•</span>
+                      <span className="text-amber-600 dark:text-cyber-amber">-</span>
                       <span>{ach}</span>
                     </div>
                   ))}
@@ -234,10 +224,16 @@ const Terminal: React.FC = () => {
                   <Briefcase size={14} className="text-cyber-darkPurple dark:text-cyber-purple" /> Leadership
                 </p>
                 <div className="space-y-2">
-                  {RESUME_DATA.responsibilities.map((resp, i) => (
-                    <div key={i} className="flex gap-2 text-[9px] text-slate-600 dark:text-white/70">
-                      <span className="text-cyber-darkPurple dark:text-cyber-purple">•</span>
-                      <span>{resp}</span>
+                  {RESUME_DATA.leadership.map((item) => (
+                    <div key={`${item.organization}-${item.duration}`} className="text-[9px] text-slate-600 dark:text-white/70">
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
+                        <span className="font-bold text-slate-800 dark:text-white">{item.organization} | {item.title}</span>
+                        <span className="text-cyber-darkPurple dark:text-cyber-purple font-bold whitespace-nowrap">{item.duration}</span>
+                      </div>
+                      <div className="flex gap-2 mt-1">
+                        <span className="text-cyber-darkPurple dark:text-cyber-purple">-</span>
+                        <span>{item.detail}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -265,17 +261,21 @@ const Terminal: React.FC = () => {
       case 'contact':
         addOutput(
           <div className="flex flex-col gap-3 mt-4">
-            <a href={SOCIALS.linkedin} target="_blank" className="flex items-center gap-3 group">
+            <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 group">
+              <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-cyan-600 dark:group-hover:border-cyber-cyan transition-colors"><Mail size={14} className="text-slate-600 dark:text-white/40 group-hover:text-cyan-600 dark:group-hover:text-cyber-cyan" /></div>
+              <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors font-bold tracking-wider">{CONTACT.email}</span>
+            </a>
+            <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-3 group">
               <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-[#0077b5] transition-colors"><Linkedin size={14} className="text-slate-600 dark:text-white/40 group-hover:text-[#0077b5]" /></div>
               <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ LINKEDIN_PROFILE ]</span>
             </a>
-            <a href={SOCIALS.github} target="_blank" className="flex items-center gap-3 group">
+            <a href={CONTACT.github} target="_blank" rel="noreferrer" className="flex items-center gap-3 group">
               <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-slate-900 dark:group-hover:border-white transition-colors"><Github size={14} className="text-slate-600 dark:text-white/40 group-hover:text-slate-900 dark:group-hover:text-white" /></div>
               <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ GITHUB_REPOSITORY ]</span>
             </a>
-            <a href={SOCIALS.x} target="_blank" className="flex items-center gap-3 group">
-              <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-[#1DA1F2] transition-colors"><Twitter size={14} className="text-slate-600 dark:text-white/40 group-hover:text-[#1DA1F2]" /></div>
-              <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ X_BROADCAST ]</span>
+            <a href={CONTACT.portfolio} target="_blank" rel="noreferrer" className="flex items-center gap-3 group">
+              <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-cyber-darkGreen dark:group-hover:border-cyber-green transition-colors"><Globe2 size={14} className="text-slate-600 dark:text-white/40 group-hover:text-cyber-darkGreen dark:group-hover:text-cyber-green" /></div>
+              <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ PORTFOLIO ]</span>
             </a>
           </div>
         );
@@ -358,7 +358,7 @@ const Terminal: React.FC = () => {
 
       <div className="mt-4 flex flex-wrap gap-2">
         <span className="text-[10px] text-slate-400 dark:text-white/30 uppercase font-bold tracking-widest mr-2">Neural Suggestions:</span>
-        {['about', 'experience', 'projects', 'vibe-coded', 'mission', 'resume'].map(q => (
+        {['about', 'experience', 'projects', 'vibe-coded', 'skills', 'mission', 'resume'].map(q => (
           <button 
             key={q}
             onClick={() => handleCommand(q)}
