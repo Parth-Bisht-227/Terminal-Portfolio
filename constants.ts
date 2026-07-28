@@ -115,8 +115,7 @@ export const SKILLS = [
 export const CONTACT = {
   email: 'bishtparth227@gmail.com',
   linkedin: 'https://www.linkedin.com/in/parth-bisht-088480282/',
-  github: 'https://github.com/Parth-Bisht-227',
-  portfolio: 'https://terminal-portfolio-three-weld.vercel.app/'
+  github: 'https://github.com/Parth-Bisht-227'
 };
 
 export const SYSTEM_DATA = {

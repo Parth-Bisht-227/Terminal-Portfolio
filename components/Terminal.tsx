@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ExternalLink, Code2, Zap, Github, Linkedin, Mail, Globe2, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { ChevronRight, ExternalLink, Code2, Zap, Github, Linkedin, Mail, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
 import { TerminalLine } from '../types';
 import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, CONTACT, RESUME_DATA, SKILLS, EXPERIENCE } from '../constants';
 import MissionHUD from './MissionHUD';
@@ -272,10 +272,6 @@ const Terminal: React.FC = () => {
             <a href={CONTACT.github} target="_blank" rel="noreferrer" className="flex items-center gap-3 group">
               <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-slate-900 dark:group-hover:border-white transition-colors"><Github size={14} className="text-slate-600 dark:text-white/40 group-hover:text-slate-900 dark:group-hover:text-white" /></div>
               <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ GITHUB_REPOSITORY ]</span>
-            </a>
-            <a href={CONTACT.portfolio} target="_blank" rel="noreferrer" className="flex items-center gap-3 group">
-              <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-cyber-darkGreen dark:group-hover:border-cyber-green transition-colors"><Globe2 size={14} className="text-slate-600 dark:text-white/40 group-hover:text-cyber-darkGreen dark:group-hover:text-cyber-green" /></div>
-              <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors uppercase font-bold tracking-wider">[ PORTFOLIO ]</span>
             </a>
           </div>
         );
