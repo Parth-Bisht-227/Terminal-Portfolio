@@ -1,12 +1,12 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, ExternalLink, Code2, Github, Linkedin, Mail, Phone, Globe2, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { ChevronRight, ExternalLink, Code2, Zap, Github, Linkedin, Mail, Globe2, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
 import { TerminalLine } from '../types';
-import { PROJECTS, SYSTEM_DATA, CONTACT, RESUME_DATA, SKILLS, EXPERIENCE } from '../constants';
+import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, CONTACT, RESUME_DATA, SKILLS, EXPERIENCE } from '../constants';
 import MissionHUD from './MissionHUD';
 
-const COMMANDS = ['help', 'about', 'experience', 'projects', 'mission', 'skills', 'contact', 'resume', 'clear'];
+const COMMANDS = ['help', 'about', 'experience', 'projects', 'vibe-coded', 'mission', 'skills', 'contact', 'resume', 'clear'];
 
 const Terminal: React.FC = () => {
   const [input, setInput] = useState('');
@@ -116,6 +116,24 @@ const Terminal: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+        );
+        break;
+      case 'vibe-coded':
+        addOutput(
+          <div className="mt-4 space-y-3">
+            <p className="text-xs font-bold text-cyber-darkGreen dark:text-cyber-green uppercase flex items-center gap-2"><Zap size={14} /> Rapid Prototype Lab (Vibe-Coded)</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {RAPID_PROTOTYPES.map((prototype) => (
+                <a key={prototype.name} href={prototype.link} target="_blank" rel="noreferrer" className="block p-3 border border-black/5 dark:border-white/5 rounded-lg hover:bg-slate-200/50 dark:hover:bg-white/5 transition-colors group">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-[11px] font-bold text-cyan-700 dark:text-cyber-cyan">{prototype.name}</span>
+                    <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <p className="text-[9px] text-slate-500 dark:text-white/40">{prototype.desc}</p>
+                </a>
+              ))}
+            </div>
           </div>
         );
         break;
@@ -243,10 +261,6 @@ const Terminal: React.FC = () => {
       case 'contact':
         addOutput(
           <div className="flex flex-col gap-3 mt-4">
-            <a href={`tel:${CONTACT.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 group">
-              <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-cyan-600 dark:group-hover:border-cyber-cyan transition-colors"><Phone size={14} className="text-slate-600 dark:text-white/40 group-hover:text-cyan-600 dark:group-hover:text-cyber-cyan" /></div>
-              <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors font-bold tracking-wider">{CONTACT.phone}</span>
-            </a>
             <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 group">
               <div className="p-2 border border-black/10 dark:border-white/10 rounded-lg group-hover:border-cyan-600 dark:group-hover:border-cyber-cyan transition-colors"><Mail size={14} className="text-slate-600 dark:text-white/40 group-hover:text-cyan-600 dark:group-hover:text-cyber-cyan" /></div>
               <span className="text-xs text-slate-600 dark:text-white/70 group-hover:text-slate-900 dark:group-hover:text-white transition-colors font-bold tracking-wider">{CONTACT.email}</span>
@@ -344,7 +358,7 @@ const Terminal: React.FC = () => {
 
       <div className="mt-4 flex flex-wrap gap-2">
         <span className="text-[10px] text-slate-400 dark:text-white/30 uppercase font-bold tracking-widest mr-2">Neural Suggestions:</span>
-        {['about', 'experience', 'projects', 'skills', 'mission', 'resume'].map(q => (
+        {['about', 'experience', 'projects', 'vibe-coded', 'skills', 'mission', 'resume'].map(q => (
           <button 
             key={q}
             onClick={() => handleCommand(q)}

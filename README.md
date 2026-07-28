@@ -25,6 +25,7 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 | `help`        | List all available commands                 |
 | `about`       | Display bio and headline                    |
 | `projects`    | Show featured projects                      |
+| `vibe-coded`  | List rapid prototypes and side experiments  |
 | `skills`      | View skill breakdown                        |
 | `mission`     | Open the resume-backed profile HUD          |
 | `contact`     | Show social links and contact info          |

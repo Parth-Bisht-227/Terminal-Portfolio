@@ -86,6 +86,24 @@ export const PROJECTS: Project[] = [
   }
 ];
 
+export const RAPID_PROTOTYPES = [
+  {
+    name: 'Sharp AI',
+    desc: 'Facial geometry analysis tool that recommends hairstyles and beard combos for men, with AI-generated visual previews.',
+    link: 'https://ai.studio/apps/drive/15K3-vRDVv0YeiaNnJ0a0X-VkeymKnx_8?fullscreenApplet=true'
+  },
+  {
+    name: 'Splashify',
+    desc: 'Interactive music experience with a dynamic color-splash cursor.',
+    link: 'https://splashifyyy.netlify.app/'
+  },
+  {
+    name: 'Talk2Me AI',
+    desc: 'Voice AI companion built with Vapi - one of my first voice agent builds.',
+    link: 'https://talk2me-ai.netlify.app/'
+  }
+];
+
 export const SKILLS = [
   { category: 'PROGRAMMING', skills: ['Python', 'Java', 'C++', 'SQL'] },
   { category: 'MACHINE LEARNING & CV', skills: ['PyTorch', 'TensorFlow/Keras', 'OpenCV'] },
@@ -95,7 +113,6 @@ export const SKILLS = [
 ];
 
 export const CONTACT = {
-  phone: '+91 9999536555',
   email: 'bishtparth227@gmail.com',
   linkedin: 'https://www.linkedin.com/in/parth-bisht-088480282/',
   github: 'https://github.com/Parth-Bisht-227',
