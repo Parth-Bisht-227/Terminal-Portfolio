@@ -8,7 +8,7 @@ const Dock: React.FC = () => {
   const items = [
     { icon: User, label: 'About', cmd: 'about', lightColor: '#0891b2', darkColor: COLORS.CYAN },
     { icon: Code, label: 'Projects', cmd: 'projects', lightColor: '#16a34a', darkColor: COLORS.GREEN },
-    { icon: Target, label: 'Mission', cmd: 'mission', lightColor: '#7c3aed', darkColor: COLORS.PURPLE },
+    { icon: Target, label: 'Profile', cmd: 'mission', lightColor: '#7c3aed', darkColor: COLORS.PURPLE },
     { icon: FileText, label: 'Resume', cmd: 'resume', lightColor: '#d97706', darkColor: COLORS.AMBER },
     { icon: MessageSquare, label: 'Contact', cmd: 'contact', lightColor: '#475569', darkColor: '#94a3b8' },
   ];

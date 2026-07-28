@@ -26,8 +26,7 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 | `about`       | Display bio and headline                    |
 | `projects`    | Show featured projects                      |
 | `skills`      | View skill breakdown                        |
-| `mission`     | Open the Mission HUD panel                  |
-| `vibe-coded`  | List rapid prototypes and side experiments  |
+| `mission`     | Open the resume-backed profile HUD          |
 | `contact`     | Show social links and contact info          |
 | `resume`      | Get link to the latest resume               |
 | `clear`       | Clear the terminal output                   |
@@ -137,10 +136,9 @@ This project is a static Vite + React app and can be deployed to Vercel in minut
 ## Links
 
 - [GitHub](https://github.com/Parth-Bisht-227)
-- [LinkedIn](https://www.linkedin.com/in/parth-bisht-082280282/)
-- [X / Twitter](https://x.com/Parth_Bisht_227)
-- [DEV.to](https://dev.to/parth_bisht227)
-- [Resume](https://drive.google.com/file/d/1fy81FhrcehDNQOeu_XMDbI-QM6DNgJ12/view)
+- [LinkedIn](https://www.linkedin.com/in/parth-bisht-088480282/)
+- [Portfolio](https://terminal-portfolio-three-weld.vercel.app/)
+- [Resume](public/Parth_Bisht_Resume.pdf)
 
 ---
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { User, MapPin, Target, Activity, ShieldCheck, Terminal } from 'lucide-react';
+import { User, MapPin, Target, Activity, GraduationCap, Terminal } from 'lucide-react';
 import { SYSTEM_DATA, COLORS } from '../constants';
 
 const StatusBar: React.FC = () => {
@@ -33,8 +33,8 @@ const StatusBar: React.FC = () => {
         </div>
         <StatusItem icon={User} label="User" value={SYSTEM_DATA.user} color={COLORS.CYAN} />
         <StatusItem icon={MapPin} label="Location" value={SYSTEM_DATA.location} color={COLORS.GREEN} className="hidden md:flex" />
-        <StatusItem icon={Target} label="Target" value={SYSTEM_DATA.target} color={COLORS.PURPLE} />
-        <StatusItem icon={ShieldCheck} label="Health" value={SYSTEM_DATA.health} color={COLORS.AMBER} className="hidden md:flex" />
+        <StatusItem icon={Target} label="Focus" value={SYSTEM_DATA.focus} color={COLORS.PURPLE} />
+        <StatusItem icon={GraduationCap} label="Education" value={SYSTEM_DATA.education} color={COLORS.AMBER} className="hidden md:flex" />
       </div>
       
       <div className="flex items-center gap-4 ml-auto px-4 h-full">
