@@ -118,11 +118,12 @@ export const PROJECTS: Project[] = [
   {
     id: 'sekai-04',
     name: 'Parth no Sekai',
-    status: 'Live · Personal Tool',
+    status: 'Live · DSA Workspace',
     section: 'personal',
     tech: ['Next.js', 'Supabase', 'Spaced Review', 'DSA'],
     highlights: [
-      'Personal DSA practice and spaced-revision workspace with a searchable, status-filtered problem ledger for attempt outcomes, durable notes, and scheduled reviews.'
+      'My Notion-based DSA tracker was becoming another task to maintain, so I built the focused revision flow I wanted. Logging an attempt now takes a few seconds without breaking practice.',
+      'I used AI as a development partner to turn that friction into a searchable workspace for Clean / Hint / Stuck outcomes, durable notes, and scheduled reviews.'
     ],
     links: [
       { label: 'Live', href: 'https://parth-no-sekai.vercel.app/' }
@@ -181,8 +182,8 @@ export const SYSTEM_DATA = {
   location: 'New Delhi, India',
   focus: 'AI Engineering',
   education: 'DTU IT \'27',
-  headline: 'Voice AI Builder | Reliable Agent Systems',
-  subtext: 'AI Product Engineering Intern at Tsubasa Technologies. DTU IT \'27. Building real-time systems with deterministic business state.',
+  headline: 'Turning messy problems into working products.',
+  subtext: 'I\'m Parth, a DTU IT student and AI Product Engineering Intern interested in applied AI, product development, and Voice AI. I learn by building, testing, and improving projects around real product problems.',
   bootSequence: [
     'Initializing Neural Kernels...',
     'Mounting DTU_IT_NODE_2027...',

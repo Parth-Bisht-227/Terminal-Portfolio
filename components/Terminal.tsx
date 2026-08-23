@@ -128,10 +128,16 @@ const Terminal: React.FC = () => {
           <div className="space-y-3 mt-2 border-l-2 border-cyber-darkPurple dark:border-cyber-purple pl-4 max-w-2xl">
             <p className="text-xs font-bold text-cyber-darkPurple dark:text-cyber-purple tracking-widest uppercase">Bio-Authentication Successful</p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              I am an Information Technology undergraduate at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University (2023 - 2027)</span> with a CGPA of 8.55 / 10.
+              I am a final-year IT student at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University</span> who learns best with a real problem in front of me.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              I currently work as an <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">AI Product Engineering Intern at Tsubasa Technologies</span>. Previously, I was an AI Engineering Intern on the founding team of a US-based stealth startup, where I built the initial functional version of a real-time Voice AI restaurant-ordering agent.
+              That problem might be a voice agent that must recover when a caller changes their mind, a 1,927-question archive that needs to become a usable mobile product, or my own DSA tracker creating more work than it saves.
+            </p>
+            <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
+              The common thread is the work between idea and implementation: shaping product behavior, reviewing implementation, tracing failure cases, and checking whether the product actually holds together. That is what keeps pulling me toward <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">applied AI and Voice AI</span>.
+            </p>
+            <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
+              AI coding tools are part of my workflow, but I stay accountable for system behavior, review, debugging, and acceptance. In parallel, I am strengthening my DSA and core CS foundations so I can better understand and improve what I build.
             </p>
           </div>
         );
@@ -152,7 +158,7 @@ const Terminal: React.FC = () => {
             {PERSONAL_PROJECTS.length > 0 && (
               <section className="space-y-3 pt-1">
                 <h3 className="text-xs font-bold text-cyber-darkPurple dark:text-cyber-purple uppercase tracking-widest">
-                  Personal Tools
+                  Built for Myself
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {PERSONAL_PROJECTS.map((project) => (
@@ -197,7 +203,7 @@ const Terminal: React.FC = () => {
         );
         break;
       case 'mission':
-        addOutput(<MissionHUD />);
+        addOutput(<MissionHUD />, 'output', true);
         break;
       case 'experience':
       case 'exp':

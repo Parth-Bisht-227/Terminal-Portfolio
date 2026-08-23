@@ -12,7 +12,7 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 
 - **Interactive Terminal** - Type commands like `help`, `projects`, `experience`, `skills`, or `contact`
 - **Matrix Rain Background** - Animated canvas atmosphere behind the terminal
-- **Profile HUD** - Current role and interview-ready skill categories
+- **Mission HUD** - Current direction, Voice AI motivation, and long-term goals
 - **Dock Navigation** - Quick-launch controls for key commands
 - **Boot Sequence** - Simulated system initialization on load
 - **Responsive Layout** - Mobile stacking, wrapped tags, and scrollable terminal output
@@ -27,7 +27,7 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 | `projects`    | Show featured projects                      |
 | `vibe-coded`  | List rapid prototypes and side experiments  |
 | `skills`      | View skill breakdown                        |
-| `mission`     | Open the resume-backed profile HUD          |
+| `mission`     | Open the mission directive and current goals |
 | `contact`     | Show social links and contact info          |
 | `resume`      | Get link to the latest resume               |
 | `clear`       | Clear the terminal output                   |
@@ -67,7 +67,7 @@ npm run preview
 ├── components/
 │   ├── Dock.tsx                      # Bottom quick-launch dock
 │   ├── MatrixRain.tsx                # Animated matrix background
-│   ├── MissionHUD.tsx                # Skills & current-role profile
+│   ├── MissionHUD.tsx                # Direction and long-term mission
 │   ├── StatusBar.tsx                 # Top status bar
 │   └── Terminal.tsx                  # Core terminal emulator
 ├── App.tsx                           # Root layout & boot sequence
