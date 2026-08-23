@@ -9,13 +9,13 @@ export const COLORS = {
 };
 
 export const RESUME_DATA = {
-  link: '/Parth_Bisht_Resume.pdf',
+  link: 'https://drive.google.com/file/d/17YM1ycBmGg8Goroy0YpHAPwGkka_AXt6/view?usp=sharing',
   education: [
     {
-      degree: 'B.Tech in Information Technology',
+      degree: 'B.Tech Information Technology',
       institution: 'Delhi Technological University, New Delhi, India',
       duration: '2023 - 2027',
-      score: 'CGPA: 8.54/10'
+      score: 'CGPA: 8.55 / 10'
     },
     {
       degree: 'CBSE Class XII',
@@ -31,15 +31,16 @@ export const RESUME_DATA = {
     }
   ],
   achievements: [
-    '7th Place - NMG Labs Forge Sprint (Claude Code Edition).',
-    'Finalist - HackWithIndia 2024 (Top 40/3000+ teams) and ImaGenAI, IIT Delhi (Tryst\'25).'
+    '7th Place, NMG Labs Forge Sprint.',
+    'Finalist, HackWithIndia 2024 (Top 40 / 3000+ teams).',
+    'Finalist, ImaGenAI at IIT Delhi, Tryst \'25.'
   ],
   leadership: [
     {
       organization: 'STEP DTU',
-      title: 'Advisor; Project Lead - MentorLink',
+      title: 'Advisor; Project Lead, MentorLink',
       duration: 'Jul. 2025 - Present',
-      detail: 'Served as Joint Secretary (2025-26); coordinated mentors supporting approximately 300-500 students across branches and helped organise an 80+ participant retreat.'
+      detail: 'Previously Joint Secretary (2025-26); coordinated mentors supporting approximately 300-500 students across branches and helped organize an 80+ participant retreat.'
     }
   ]
 };
@@ -51,37 +52,94 @@ export const EXPERIENCE = [
     duration: 'Jun. 2026 - Present',
     location: 'Remote',
     bullets: [
-      'Leading the AI-assisted development of SparkPTE, translating product requirements into content schemas, scoring rules, practice workflows, acceptance criteria, and Android test plans.',
-      'Transformed and validated 1,927 questions and 1,485 media assets across 22 PTE question types, producing structured app-ready content.',
-      'Delivered workflows for all 22 question types, a searchable Question Bank, guided lessons, and a 65-question full mock test with deterministic objective scoring, progress persistence, and detailed review flows.',
-      'Led the Spark Focus UI/UX redesign and conducted physical-device testing across navigation, audio playback, recording, keyboards, responsive layouts, and Light/Dark appearance on Android.'
+      'Own SparkPTE product behavior, architecture, content and scoring models, security and privacy boundaries, acceptance criteria, Firebase/environment configuration, and deployment decisions; direct AI-assisted implementation, review changes, debug failures, and perform Android-device acceptance.',
+      'Converted a legacy WordPress archive into an auditable system of 1,927 canonical questions, 1,485 media assets, 2,735 placements, and 333 quizzes across all 22 PTE question types, with provenance, validation, quarantine, and immutable, versioned outputs.',
+      'Shaped all 22 question workflows, Guided Practice, audio and speaking-recording flows, deterministic objective scoring, detailed review, a reproducible 65-item Full Mock, and account-scoped local-first progress with offline recovery.',
+      'Validated the Development build through 130 mobile test files / 703 automated tests, additional Functions/emulator tests, 32 Rules tests, content validation, and physical Android acceptance.'
     ]
   },
   {
     company: 'Stealth Startup (US-based)',
-    role: 'AI Engineering Intern - Founding Team',
+    role: 'AI Engineering Intern, Founding Team',
     duration: 'Feb. 2026 - Jun. 2026',
     location: 'Remote',
     bullets: [
-      'Built the initial functional version of a real-time Voice AI restaurant-ordering agent in Python, integrating LiveKit, speech recognition, LLM reasoning, structured tool execution, and streaming speech synthesis.',
-      'Integrated Twilio for inbound calling and developed MongoDB-backed tools for menu search, modifier selection, cart updates, and structured order placement.',
-      'Tested transcription, interruption, incomplete-order, and tool-execution failures; later supported a senior engineer-led redesign through scenario testing, failure analysis, and structured product feedback.'
+      'Built the initial functional version of a real-time restaurant-ordering Voice AI application in Python using LiveKit, streaming speech recognition and synthesis, and LLM tool execution.',
+      'Integrated Twilio inbound telephony and developed MongoDB-backed tools for menus, modifiers, carts, and structured order placement.',
+      'Tested transcription, interruption, incomplete-order, and tool-execution failures; later supported a senior engineer-led workflow redesign through scenario testing, failure analysis, and product feedback.'
     ]
   }
 ];
 
 export const PROJECTS: Project[] = [
   {
-    id: 'manga-01',
-    name: 'Manga-Splasher',
-    tech: ['TensorFlow', 'Pix2Pix', 'U-Net', 'OpenCV', 'Streamlit'],
+    id: 'waypoint-01',
+    name: 'Waypoint Voice Lab',
+    status: 'Development',
+    section: 'featured',
+    tech: ['Python', 'LiveKit', 'FastAPI', 'SQLite', 'Deepgram', 'Groq', 'Cartesia', 'React/TypeScript'],
     highlights: [
-      'Built and deployed a Pix2Pix-based manga colourisation system using a U-Net generator, PatchGAN discriminator, TensorFlow training and checkpoint workflow, and a Streamlit interface.',
-      'Prepared a 12,136-pair training pipeline with LAB-space preprocessing; implemented generator inference, colour reconstruction, and output resizing to the original image resolution.'
+      'Built an end-to-end real-time travel-support Voice AI system connecting a LiveKit Python agent to deterministic FastAPI/SQLite tools for application status, missing documents, and travel-date updates.',
+      'Added confirmation-gated mutations, idempotent retry safety, application-ID normalization, failure-safe tool execution, human handoff, interruption handling, and authoritative backend state.',
+      'Instrumented transcription and turn latency, LLM TTFT, TTS TTFB, end-to-end response time, tool calls, and usage; validated the system with 80+ automated and provider-backed tests/evaluations.'
+    ],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Parth-Bisht-227/waypoint-voice-ai' }
+    ]
+  },
+  {
+    id: 'sparkpte-02',
+    name: 'SparkPTE',
+    status: 'Development',
+    section: 'featured',
+    tech: ['React Native', 'TypeScript', 'Firebase', 'Firestore'],
+    highlights: [
+      'Ongoing PTE preparation mobile application covering all 22 question workflows, Guided Practice, audio playback and speaking recording, detailed review, deterministic objective scoring, and a reproducible 65-item Full Mock.',
+      'Designed an auditable content pipeline that converted a legacy WordPress archive into 1,927 canonical questions and 1,485 media assets across 22 types, 2,735 placements, and 333 quizzes, with provenance, validation, quarantine, and immutable, versioned outputs.',
+      'Defined local-first reliability around account-scoped optimistic progress, durable/idempotent retries, account isolation, offline/session recovery, rollback/last-known-good behavior, race-safe account deletion, and protection against deleted-user data recreation; validated the Development build through 703 automated tests and physical Android acceptance.'
+    ],
+    links: []
+  },
+  {
+    id: 'manga-03',
+    name: 'Manga-Splasher',
+    status: 'Live',
+    section: 'featured',
+    tech: ['TensorFlow/Keras', 'Pix2Pix', 'U-Net', 'PatchGAN', 'OpenCV', 'Streamlit'],
+    highlights: [
+      'Built and deployed a Pix2Pix manga colourisation system using a U-Net generator, PatchGAN discriminator, TensorFlow/Keras training and checkpoint pipeline, and a Streamlit interface.',
+      'Prepared 12,136 paired training samples with LAB-space preprocessing; implemented inference, LAB-to-RGB reconstruction, and restoration to the original image dimensions.'
     ],
     links: [
       { label: 'GitHub', href: 'https://github.com/Parth-Bisht-227/manga-splasher' },
       { label: 'Live Demo', href: 'https://manga-splasher.streamlit.app/' }
+    ]
+  },
+  {
+    id: 'sekai-04',
+    name: 'Parth no Sekai',
+    status: 'Live · DSA Workspace',
+    section: 'personal',
+    tech: ['Next.js', 'Supabase', 'Spaced Review', 'DSA'],
+    highlights: [
+      'My Notion-based DSA tracker was becoming another task to maintain, so I built the focused revision flow I wanted. Logging an attempt now takes a few seconds without breaking practice.',
+      'I used AI as a development partner to turn that friction into a searchable workspace for Clean / Hint / Stuck outcomes, durable notes, and scheduled reviews.'
+    ],
+    links: [
+      { label: 'Live', href: 'https://parth-no-sekai.vercel.app/' }
+    ]
+  },
+  {
+    id: 'voice-05',
+    name: 'Murf Falcon Voice Ordering Agent',
+    status: 'Earlier Build',
+    section: 'earlier',
+    tech: ['Python', 'LiveKit', 'Deepgram', 'Gemini', 'Murf Falcon'],
+    highlights: [
+      'Built a real-time cafe ordering voice agent for the Murf Falcon challenge with structured tools for validated order state, missing-field checks, order confirmation, JSON persistence, and session metrics.'
+    ],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Parth-Bisht-227/voice-agent-murf-falcon-10-day-challenge' }
     ]
   }
 ];
@@ -106,10 +164,11 @@ export const RAPID_PROTOTYPES = [
 
 export const SKILLS = [
   { category: 'PROGRAMMING', skills: ['Python', 'Java', 'C++', 'SQL'] },
-  { category: 'MACHINE LEARNING & CV', skills: ['PyTorch', 'TensorFlow/Keras', 'OpenCV'] },
-  { category: 'DEVELOPMENT & DATA', skills: ['REST APIs', 'MongoDB', 'SQLite', 'Streamlit'] },
-  { category: 'VOICE AI & AGENT SYSTEMS', skills: ['LiveKit', 'Deepgram', 'Twilio', 'LLM APIs', 'Structured Function Calling', 'Streaming STT/TTS'] },
-  { category: 'TOOLS & FUNDAMENTALS', skills: ['Git/GitHub', 'Codex', 'Claude Code', 'DSA', 'OOP', 'DBMS', 'OS', 'Computer Networks'] }
+  { category: 'BACKEND / DATA', skills: ['FastAPI', 'Pydantic', 'MongoDB', 'SQLite', 'Streamlit'] },
+  { category: 'VOICE AI / AGENT SYSTEMS', skills: ['LiveKit', 'Deepgram', 'Twilio / SIP', 'Streaming STT/TTS', 'LLM APIs', 'Structured Function/Tool Calling', 'Conversational State / Agent Workflows'] },
+  { category: 'MACHINE LEARNING', skills: ['PyTorch', 'TensorFlow/Keras', 'OpenCV'] },
+  { category: 'ENGINEERING / TOOLS', skills: ['pytest', 'Git / GitHub'] },
+  { category: 'FUNDAMENTALS', skills: ['DSA', 'OOP', 'DBMS', 'Operating Systems', 'Computer Networks'] }
 ];
 
 export const CONTACT = {
@@ -123,8 +182,8 @@ export const SYSTEM_DATA = {
   location: 'New Delhi, India',
   focus: 'AI Engineering',
   education: 'DTU IT \'27',
-  headline: 'AI Product Engineering Intern | Voice AI & Agent Systems',
-  subtext: 'Information Technology undergraduate at DTU and AI Product Engineering Intern at Tsubasa Technologies.',
+  headline: 'Turning messy problems into working products.',
+  subtext: 'I\'m Parth, a DTU IT student and AI Product Engineering Intern interested in applied AI, product development, and Voice AI. I learn by building, testing, and improving projects around real product problems.',
   bootSequence: [
     'Initializing Neural Kernels...',
     'Mounting DTU_IT_NODE_2027...',

@@ -1,22 +1,21 @@
 <div align="center">
   <h1>🧠 Neural Command Center</h1>
   <p><strong>A cyber-minimalist terminal portfolio for Parth Bisht</strong></p>
-  <p>React + TypeScript • Framer Motion • Three.js • Tailwind CSS</p>
+  <p>React + TypeScript • Framer Motion • Tailwind CSS</p>
 </div>
 
 <br/>
 
-An interactive, terminal-themed portfolio website that simulates a neural command interface. Explore projects, skills, and mission data through a fully functional terminal emulator — complete with a glowing neon aesthetic, animated neural network background, and light/dark theme support.
+An interactive, terminal-themed portfolio website that simulates a neural command interface. Explore featured work, experience, skills, and profile data through a functional terminal emulator with a neon dark theme and animated matrix background.
 
 ## Features
 
-- **Interactive Terminal** — Type commands like `help`, `projects`, `skills`, `mission`, or `contact` to explore the portfolio in real time
-- **Neural Network Visualization** — Subtle animated SVG node graph as a decorative background
-- **Mission HUD** — Dashboard showing skill levels, deployment readiness, and status checkpoints
-- **Dock Navigation** — macOS-style dock with quick-launch buttons for key sections
-- **Theme Toggle** — Switch between cyber dark mode and clean light mode
-- **Boot Sequence** — Simulated system initialization on load
-- **Responsive** — Works on desktop and mobile
+- **Interactive Terminal** - Type commands like `help`, `projects`, `experience`, `skills`, or `contact`
+- **Matrix Rain Background** - Animated canvas atmosphere behind the terminal
+- **Mission HUD** - Current direction, Voice AI motivation, and long-term goals
+- **Dock Navigation** - Quick-launch controls for key commands
+- **Boot Sequence** - Simulated system initialization on load
+- **Responsive Layout** - Mobile stacking, wrapped tags, and scrollable terminal output
 
 ## Terminal Commands
 
@@ -24,10 +23,11 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 |---------------|---------------------------------------------|
 | `help`        | List all available commands                 |
 | `about`       | Display bio and headline                    |
+| `experience`  | Show professional experience                |
 | `projects`    | Show featured projects                      |
 | `vibe-coded`  | List rapid prototypes and side experiments  |
 | `skills`      | View skill breakdown                        |
-| `mission`     | Open the resume-backed profile HUD          |
+| `mission`     | Open the mission directive and current goals |
 | `contact`     | Show social links and contact info          |
 | `resume`      | Get link to the latest resume               |
 | `clear`       | Clear the terminal output                   |
@@ -40,7 +40,6 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 | TypeScript      | Type safety                    |
 | Vite            | Build tool & dev server        |
 | Framer Motion   | Animations & transitions       |
-| Three.js        | 3D / shader background         |
 | Tailwind CSS    | Utility-first styling          |
 | Lucide React    | Icon library                   |
 
@@ -51,10 +50,6 @@ An interactive, terminal-themed portfolio website that simulates a neural comman
 ```bash
 # Install dependencies
 npm install
-
-# Set your Gemini API key (optional, for AI features)
-# Make a copy of .env.local and add:
-# GEMINI_API_KEY=your_key_here
 
 # Start the development server
 npm run dev        # → http://localhost:3000
@@ -70,11 +65,10 @@ npm run preview
 
 ```
 ├── components/
-│   ├── AnimatedShaderBackground.tsx  # Three.js aurora shader (disabled)
 │   ├── Dock.tsx                      # Bottom quick-launch dock
-│   ├── MissionHUD.tsx                # Skills & mission dashboard
-│   ├── NeuralNetwork.tsx             # Animated neural node graph
-│   ├── StatusBar.tsx                 # Top status bar & theme toggle
+│   ├── MatrixRain.tsx                # Animated matrix background
+│   ├── MissionHUD.tsx                # Direction and long-term mission
+│   ├── StatusBar.tsx                 # Top status bar
 │   └── Terminal.tsx                  # Core terminal emulator
 ├── App.tsx                           # Root layout & boot sequence
 ├── constants.ts                      # Portfolio data (projects, skills, etc.)
@@ -107,15 +101,7 @@ This project is a static Vite + React app and can be deployed to Vercel in minut
    - Import your GitHub repository (`Parth-Bisht-227/Terminal-Portfolio`)
    - Vercel will auto-detect Vite — no framework override needed
 
-3. **Configure environment variables** (optional):
-
-   | Variable         | Value                         |
-   |-----------------|-------------------------------|
-   | `GEMINI_API_KEY` | Your Gemini API key (if any)  |
-
-   Add this in your Vercel project dashboard under **Settings → Environment Variables**.
-
-4. **Deploy settings** (auto-detected, but verify):
+3. **Deploy settings** (auto-detected, but verify):
 
    | Setting          | Value            |
    |-----------------|------------------|
@@ -124,9 +110,9 @@ This project is a static Vite + React app and can be deployed to Vercel in minut
    | Output Directory | `dist`           |
    | Install Command  | `npm install`    |
 
-5. **Click Deploy** — Vercel will build and publish your site in under a minute.
+4. **Click Deploy** — Vercel will build and publish your site in under a minute.
 
-   Your site will be live at `https://terminal-portfolio.vercel.app` (custom domain configurable in Vercel dashboard).
+   The current deployment is `https://terminal-portfolio-three-weld.vercel.app/` (custom domain configurable in Vercel dashboard).
 
 ### Post-Deploy
 
@@ -139,7 +125,7 @@ This project is a static Vite + React app and can be deployed to Vercel in minut
 - [GitHub](https://github.com/Parth-Bisht-227)
 - [LinkedIn](https://www.linkedin.com/in/parth-bisht-088480282/)
 - [Portfolio](https://terminal-portfolio-three-weld.vercel.app/)
-- [Resume](public/Parth_Bisht_Resume.pdf)
+- [Resume](https://drive.google.com/file/d/17YM1ycBmGg8Goroy0YpHAPwGkka_AXt6/view?usp=sharing)
 
 ---
 
