@@ -3,6 +3,8 @@ import React from 'react';
 export interface Project {
   id: string;
   name: string;
+  status: string;
+  section: 'featured' | 'personal' | 'earlier';
   tech: string[];
   highlights: string[];
   links: Array<{

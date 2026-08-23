@@ -2,11 +2,49 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, ExternalLink, Code2, Zap, Github, Linkedin, Mail, FileText, GraduationCap, Award, Briefcase } from 'lucide-react';
-import { TerminalLine } from '../types';
+import { Project, TerminalLine } from '../types';
 import { PROJECTS, RAPID_PROTOTYPES, SYSTEM_DATA, CONTACT, RESUME_DATA, SKILLS, EXPERIENCE } from '../constants';
 import MissionHUD from './MissionHUD';
 
 const COMMANDS = ['help', 'about', 'experience', 'projects', 'vibe-coded', 'mission', 'skills', 'contact', 'resume', 'clear'];
+const FEATURED_PROJECTS = PROJECTS.filter((project) => project.section === 'featured');
+const PERSONAL_PROJECTS = PROJECTS.filter((project) => project.section === 'personal');
+const EARLIER_PROJECTS = PROJECTS.filter((project) => project.section === 'earlier');
+
+const ProjectCard: React.FC<{ project: Project; compact?: boolean }> = ({ project, compact = false }) => (
+  <article className={`h-full min-w-0 overflow-hidden p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg border border-black/5 dark:border-white/5 hover:border-cyan-500/50 dark:hover:border-cyber-cyan/50 transition-colors group ${compact ? 'md:p-3' : ''}`}>
+    <div className="flex items-start justify-between gap-3 mb-2">
+      <span className="text-[10px] font-bold text-cyan-600 dark:text-cyber-cyan uppercase tracking-widest">{project.id}</span>
+      <div className="flex items-center justify-end gap-2 min-w-0">
+        <span className="text-[9px] font-bold uppercase tracking-wider text-cyber-darkPurple dark:text-cyber-purple text-right break-words">{project.status}</span>
+        <Code2 size={14} aria-hidden="true" className="shrink-0 text-slate-400 dark:text-white/20 group-hover:text-cyan-600 dark:group-hover:text-cyber-cyan" />
+      </div>
+    </div>
+    <h4 className="font-bold text-sm mb-2 text-slate-900 dark:text-white">{project.name}</h4>
+    <div className="space-y-1.5 mb-3">
+      {project.highlights.map((highlight) => (
+        <div key={highlight} className="flex gap-2 text-[11px] text-slate-500 dark:text-white/50 leading-relaxed min-w-0">
+          <span className="shrink-0 text-cyan-600 dark:text-cyber-cyan">-</span>
+          <span className="min-w-0 break-words">{highlight}</span>
+        </div>
+      ))}
+    </div>
+    <div className="flex flex-wrap gap-1.5 mb-4">
+      {project.tech.map((technology) => (
+        <span key={technology} className="max-w-full break-words text-[9px] px-1.5 py-0.5 rounded border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 text-slate-700 dark:text-white/80">{technology}</span>
+      ))}
+    </div>
+    {project.links.length > 0 && (
+      <div className="flex flex-wrap gap-x-3 gap-y-2">
+        {project.links.map((link) => (
+          <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-cyber-darkGreen dark:text-cyber-green hover:underline flex items-center gap-1 break-words">
+            [ {link.label.toUpperCase()} ] <ExternalLink size={10} aria-hidden="true" className="shrink-0" />
+          </a>
+        ))}
+      </div>
+    )}
+  </article>
+);
 
 const Terminal: React.FC = () => {
   const [input, setInput] = useState('');
@@ -14,6 +52,7 @@ const Terminal: React.FC = () => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [historyQueue, setHistoryQueue] = useState<string[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const pendingScrollTargetRef = useRef<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -42,13 +81,26 @@ const Terminal: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const targetId = pendingScrollTargetRef.current;
+    if (targetId) {
+      const target = container.querySelector<HTMLElement>('[data-terminal-line-id="' + targetId + '"]');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        pendingScrollTargetRef.current = null;
+      }
+      return;
     }
+
+    container.scrollTop = container.scrollHeight;
   }, [history]);
 
-  const addOutput = (content: string | React.ReactNode, type: TerminalLine['type'] = 'output') => {
-    setHistory(prev => [...prev, { id: Math.random().toString(36), content, type }]);
+  const addOutput = (content: string | React.ReactNode, type: TerminalLine['type'] = 'output', focusStart = false) => {
+    const id = Math.random().toString(36);
+    if (focusStart) pendingScrollTargetRef.current = id;
+    setHistory(prev => [...prev, { id, content, type }]);
   };
 
   const handleCommand = (cmd: string) => {
@@ -76,7 +128,7 @@ const Terminal: React.FC = () => {
           <div className="space-y-3 mt-2 border-l-2 border-cyber-darkPurple dark:border-cyber-purple pl-4 max-w-2xl">
             <p className="text-xs font-bold text-cyber-darkPurple dark:text-cyber-purple tracking-widest uppercase">Bio-Authentication Successful</p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              I am an Information Technology undergraduate at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University (2023 - 2027)</span> with a CGPA of 8.54/10.
+              I am an Information Technology undergraduate at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University (2023 - 2027)</span> with a CGPA of 8.55 / 10.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
               I currently work as an <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">AI Product Engineering Intern at Tsubasa Technologies</span>. Previously, I was an AI Engineering Intern on the founding team of a US-based stealth startup, where I built the initial functional version of a real-time Voice AI restaurant-ordering agent.
@@ -86,37 +138,44 @@ const Terminal: React.FC = () => {
         break;
       case 'projects':
         addOutput(
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            {PROJECTS.map(p => (
-              <div key={p.id} className="p-4 bg-slate-100/50 dark:bg-white/5 rounded-lg border border-black/5 dark:border-white/5 hover:border-cyan-500/50 dark:hover:border-cyber-cyan/50 transition-all cursor-pointer group">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-bold text-cyan-600 dark:text-cyber-cyan uppercase tracking-widest">{p.id}</span>
-                  <Code2 size={14} className="text-slate-400 dark:text-white/20 group-hover:text-cyan-600 dark:group-hover:text-cyber-cyan" />
-                </div>
-                <h4 className="font-bold text-sm mb-1 text-slate-900 dark:text-white">{p.name}</h4>
-                <div className="space-y-1.5 mb-3">
-                  {p.highlights.map((highlight) => (
-                    <div key={highlight} className="flex gap-2 text-[10px] text-slate-500 dark:text-white/50 leading-snug">
-                      <span className="text-cyan-600 dark:text-cyber-cyan">-</span>
-                      <span>{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {p.tech.map(t => (
-                    <span key={t} className="text-[8px] px-1.5 py-0.5 rounded border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 text-slate-700 dark:text-white/80">{t}</span>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {p.links.map((link) => (
-                    <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="text-[10px] font-bold text-cyber-darkGreen dark:text-cyber-green hover:underline flex items-center gap-1">
-                      [ {link.label.toUpperCase()} ] <ExternalLink size={10} />
-                    </a>
-                  ))}
-                </div>
+          <div className="mt-4 space-y-5 max-w-4xl">
+            <section className="space-y-3">
+              <h3 className="text-xs font-bold text-cyber-darkGreen dark:text-cyber-green uppercase tracking-widest">
+                Featured / Current Work
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {FEATURED_PROJECTS.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
               </div>
-            ))}
-          </div>
+            </section>
+            {PERSONAL_PROJECTS.length > 0 && (
+              <section className="space-y-3 pt-1">
+                <h3 className="text-xs font-bold text-cyber-darkPurple dark:text-cyber-purple uppercase tracking-widest">
+                  Personal Tools
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {PERSONAL_PROJECTS.map((project) => (
+                    <ProjectCard key={project.id} project={project} compact />
+                  ))}
+                </div>
+              </section>
+            )}
+            {EARLIER_PROJECTS.length > 0 && (
+              <section className="space-y-3 pt-1">
+                <h3 className="text-xs font-bold text-slate-500 dark:text-white/60 uppercase tracking-widest">
+                  Selected Earlier Work
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {EARLIER_PROJECTS.map((project) => (
+                    <ProjectCard key={project.id} project={project} compact />
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>,
+          'output',
+          true
         );
         break;
       case 'vibe-coded':
@@ -181,10 +240,11 @@ const Terminal: React.FC = () => {
               </h3>
               <a 
                 href={RESUME_DATA.link} 
-                download="Parth_Bisht_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
                 className="px-4 py-1.5 bg-cyan-600 dark:bg-cyber-cyan text-white dark:text-black font-bold text-[10px] rounded-lg hover:opacity-80 transition-opacity flex items-center gap-2 w-fit uppercase"
               >
-                Download PDF <FileText size={12} />
+                Open Latest Resume <ExternalLink size={12} />
               </a>
             </div>
 
@@ -325,6 +385,7 @@ const Terminal: React.FC = () => {
           <motion.div
             key={line.id}
             initial={{ opacity: 0, x: -5 }}
+            data-terminal-line-id={line.id}
             animate={{ opacity: 1, x: 0 }}
             className={`text-xs md:text-sm ${
               line.type === 'error' ? 'text-rose-600 font-bold' :
