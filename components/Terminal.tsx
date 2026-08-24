@@ -57,7 +57,7 @@ const Terminal: React.FC = () => {
 
   useEffect(() => {
     const sequence = async () => {
-      addOutput(<div className="mb-4"><p className="text-sm md:text-xl font-bold shimmer">{SYSTEM_DATA.headline}</p><p className="text-[10px] md:text-xs text-slate-500 dark:text-white/50">{SYSTEM_DATA.subtext}</p></div>);
+      addOutput(<div className="mb-4"><p className="text-sm md:text-xl font-bold shimmer">{SYSTEM_DATA.headline}</p><p className="text-[10px] md:text-xs text-slate-500 dark:text-white/50 mt-2 leading-relaxed">{SYSTEM_DATA.subtext}</p></div>);
       for (let i = 0; i < SYSTEM_DATA.bootSequence.length; i++) {
         await new Promise(r => setTimeout(r, 200));
         addOutput(SYSTEM_DATA.bootSequence[i], 'success');
@@ -128,16 +128,16 @@ const Terminal: React.FC = () => {
           <div className="space-y-3 mt-2 border-l-2 border-cyber-darkPurple dark:border-cyber-purple pl-4 max-w-2xl">
             <p className="text-xs font-bold text-cyber-darkPurple dark:text-cyber-purple tracking-widest uppercase">Bio-Authentication Successful</p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              I am a final-year IT student at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University</span> who learns best with a real problem in front of me.
+              I’m a final-year Information Technology student at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University</span> and an AI Product Engineering Intern at <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">Tsubasa Technologies</span>. Most of my learning has come from building projects that force me to think beyond the happy path.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              That problem might be a voice agent that must recover when a caller changes their mind, a 1,927-question archive that needs to become a usable mobile product, or my own DSA tracker creating more work than it saves.
+              At Tsubasa, I’ve been helping shape <span className="font-bold text-cyan-700 dark:text-cyber-cyan">SparkPTE</span>, a PTE preparation app currently in development. I’ve worked across product behavior, application architecture, content and data workflows, scoring, privacy boundaries, implementation review, debugging, and acceptance validation. It has been a steep introduction to mobile and product engineering, and the product is still a work in progress.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              The common thread is the work between idea and implementation: shaping product behavior, reviewing implementation, tracing failure cases, and checking whether the product actually holds together. That is what keeps pulling me toward <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">applied AI and Voice AI</span>.
+              I’m also exploring Voice AI because real conversations are messy. People interrupt, change their minds, and need systems to preserve context. Alongside my projects, I’m preparing for placements and strengthening my DSA and core CS foundations.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              AI coding tools are part of my workflow, but I stay accountable for system behavior, review, debugging, and acceptance. In parallel, I am strengthening my DSA and core CS foundations so I can better understand and improve what I build.
+              Outside the terminal, I listen to music and watch anime. I’m trying to become a better engineer through steady, honest iteration.
             </p>
           </div>
         );

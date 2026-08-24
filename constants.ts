@@ -3,7 +3,7 @@ import { Project } from './types';
 export const COLORS = {
   CYAN: '#00F0FF',
   GREEN: '#39FF14',
-  PURPLE: '#BC13FE',
+  PURPLE: '#A78BFA',
   AMBER: '#FFB100',
   BG: '#050505',
 };
@@ -52,10 +52,9 @@ export const EXPERIENCE = [
     duration: 'Jun. 2026 - Present',
     location: 'Remote',
     bullets: [
-      'Own SparkPTE product behavior, architecture, content and scoring models, security and privacy boundaries, acceptance criteria, Firebase/environment configuration, and deployment decisions; direct AI-assisted implementation, review changes, debug failures, and perform Android-device acceptance.',
-      'Converted a legacy WordPress archive into an auditable system of 1,927 canonical questions, 1,485 media assets, 2,735 placements, and 333 quizzes across all 22 PTE question types, with provenance, validation, quarantine, and immutable, versioned outputs.',
-      'Shaped all 22 question workflows, Guided Practice, audio and speaking-recording flows, deterministic objective scoring, detailed review, a reproducible 65-item Full Mock, and account-scoped local-first progress with offline recovery.',
-      'Validated the Development build through 130 mobile test files / 703 automated tests, additional Functions/emulator tests, 32 Rules tests, content validation, and physical Android acceptance.'
+      'Directed development of SparkPTE, a local-first PTE preparation app spanning all 22 question workflows, Guided Practice, media-based speaking and listening, deterministic objective scoring, review flows, and a 65-item Full Mock.',
+      'Designed migration of a legacy WordPress archive into an auditable pipeline of 1,927 canonical questions and 1,485 media assets with provenance, validation and quarantine, and versioned outputs.',
+      'Designed owner-scoped progress sync and offline content delivery with idempotent retries, account isolation, rollback, and race-safe deletion; validated the development build through 703 automated tests and physical Android acceptance.'
     ]
   },
   {
@@ -183,7 +182,7 @@ export const SYSTEM_DATA = {
   focus: 'AI Engineering',
   education: 'DTU IT \'27',
   headline: 'Turning messy problems into working products.',
-  subtext: 'I\'m Parth, a DTU IT student and AI Product Engineering Intern interested in applied AI, product development, and Voice AI. I learn by building, testing, and improving projects around real product problems.',
+  subtext: 'I’m Parth, a final-year IT student at DTU and an AI Product Engineering Intern at Tsubasa Technologies. I’m exploring applied AI and Voice AI by building products, testing edge cases, and learning from what breaks.',
   bootSequence: [
     'Initializing Neural Kernels...',
     'Mounting DTU_IT_NODE_2027...',
