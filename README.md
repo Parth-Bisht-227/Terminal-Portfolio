@@ -125,7 +125,7 @@ This project is a static Vite + React app and can be deployed to Vercel in minut
 - [GitHub](https://github.com/Parth-Bisht-227)
 - [LinkedIn](https://www.linkedin.com/in/parth-bisht-088480282/)
 - [Portfolio](https://terminal-portfolio-three-weld.vercel.app/)
-- [Resume](https://drive.google.com/file/d/17YM1ycBmGg8Goroy0YpHAPwGkka_AXt6/view?usp=sharing)
+- [Resume](https://drive.google.com/file/d/16PAiEJLA3qvogdw1ksd_z66JIuIbIw4W/view?usp=sharing)
 
 ---
 
