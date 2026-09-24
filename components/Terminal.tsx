@@ -128,16 +128,16 @@ const Terminal: React.FC = () => {
           <div className="space-y-3 mt-2 border-l-2 border-cyber-darkPurple dark:border-cyber-purple pl-4 max-w-2xl">
             <p className="text-xs font-bold text-cyber-darkPurple dark:text-cyber-purple tracking-widest uppercase">Bio-Authentication Successful</p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              I’m a final-year Information Technology student at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University</span> and an AI Product Engineering Intern at <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">Tsubasa Technologies</span>. Most of my learning has come from building projects that force me to think beyond the happy path.
+              I’m an Information Technology undergraduate at <span className="font-bold text-cyan-700 dark:text-cyber-cyan">Delhi Technological University</span> ('27) and an AI Product Engineering Intern at <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">Tsubasa Technologies</span>. Most of my learning has come from building real systems that force me to think beyond the happy path.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              At Tsubasa, I’ve been helping shape <span className="font-bold text-cyan-700 dark:text-cyber-cyan">SparkPTE</span>, a PTE preparation app currently in development. I’ve worked across product behavior, application architecture, content and data workflows, scoring, privacy boundaries, implementation review, debugging, and acceptance validation. It has been a steep introduction to mobile and product engineering, and the product is still a work in progress.
+              At Tsubasa, I led development of <span className="font-bold text-cyan-700 dark:text-cyber-cyan">SparkPTE</span>, a local-first PTE preparation app covering all 22 question types, Guided Practice, media-based audio workflows, review flows, offline learning, and full mock tests.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              I’m also exploring Voice AI because real conversations are messy. People interrupt, change their minds, and need systems to preserve context. Alongside my projects, I’m preparing for placements and strengthening my DSA and core CS foundations.
+              I’m also deeply focused on Voice AI & Agent Systems (such as <span className="font-bold text-cyber-darkGreen dark:text-cyber-green">Waypoint Voice Lab</span>) because real-time conversational systems require handling interruptions, state mutations, and tool boundaries without fail.
             </p>
             <p className="text-xs leading-relaxed text-slate-700 dark:text-white/80">
-              Outside the terminal, I listen to music and watch anime. I’m trying to become a better engineer through steady, honest iteration.
+              Outside the terminal, I listen to music and watch anime. I’m trying to become a high-caliber engineer through steady, honest iteration.
             </p>
           </div>
         );

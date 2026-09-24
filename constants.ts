@@ -9,10 +9,10 @@ export const COLORS = {
 };
 
 export const RESUME_DATA = {
-  link: 'https://drive.google.com/file/d/17YM1ycBmGg8Goroy0YpHAPwGkka_AXt6/view?usp=sharing',
+  link: 'https://drive.google.com/file/d/16PAiEJLA3qvogdw1ksd_z66JIuIbIw4W/view?usp=sharing',
   education: [
     {
-      degree: 'B.Tech Information Technology',
+      degree: 'B.Tech in Information Technology',
       institution: 'Delhi Technological University, New Delhi, India',
       duration: '2023 - 2027',
       score: 'CGPA: 8.55 / 10'
@@ -33,14 +33,14 @@ export const RESUME_DATA = {
   achievements: [
     '7th Place, NMG Labs Forge Sprint.',
     'Finalist, HackWithIndia 2024 (Top 40 / 3000+ teams).',
-    'Finalist, ImaGenAI at IIT Delhi, Tryst \'25.'
+    'Finalist, ImaGenAI at IIT Delhi.'
   ],
   leadership: [
     {
       organization: 'STEP DTU',
-      title: 'Advisor; Project Lead, MentorLink',
+      title: 'Advisor; Project Lead - MentorLink',
       duration: 'Jul. 2025 - Present',
-      detail: 'Previously Joint Secretary (2025-26); coordinated mentors supporting approximately 300-500 students across branches and helped organize an 80+ participant retreat.'
+      detail: 'Joint Secretary (2025–26); coordinated mentors for 300–500 students and helped organise an 80+ participant retreat.'
     }
   ]
 };
@@ -52,9 +52,9 @@ export const EXPERIENCE = [
     duration: 'Jun. 2026 - Present',
     location: 'Remote',
     bullets: [
-      'Directed development of SparkPTE, a local-first PTE preparation app spanning all 22 question workflows, Guided Practice, media-based speaking and listening, deterministic objective scoring, review flows, and a 65-item Full Mock.',
-      'Designed migration of a legacy WordPress archive into an auditable pipeline of 1,927 canonical questions and 1,485 media assets with provenance, validation and quarantine, and versioned outputs.',
-      'Designed owner-scoped progress sync and offline content delivery with idempotent retries, account isolation, rollback, and race-safe deletion; validated the development build through 703 automated tests and physical Android acceptance.'
+      'Led development of SparkPTE, a local-first PTE preparation app covering all 22 question types, Guided Practice, media-based speaking and listening, review flows, offline learning, and a 65-item Full Mock.',
+      'Reworked a legacy WordPress question bank into a structured dataset of 1,927 questions and 1,485 media assets, resolving data and media issues and defining the canonical content format used by the application.',
+      'Defined and validated Firebase-backed systems for cloud content delivery, learner progress sync, and account lifecycle, including offline caching, account isolation, retry-safe updates, rollback, secure deletion, and the backend foundation for future subjective scoring; validated critical workflows through 700+ automated tests and physical-device testing.'
     ]
   },
   {
@@ -63,9 +63,9 @@ export const EXPERIENCE = [
     duration: 'Feb. 2026 - Jun. 2026',
     location: 'Remote',
     bullets: [
-      'Built the initial functional version of a real-time restaurant-ordering Voice AI application in Python using LiveKit, streaming speech recognition and synthesis, and LLM tool execution.',
-      'Integrated Twilio inbound telephony and developed MongoDB-backed tools for menus, modifiers, carts, and structured order placement.',
-      'Tested transcription, interruption, incomplete-order, and tool-execution failures; later supported a senior engineer-led workflow redesign through scenario testing, failure analysis, and product feedback.'
+      'Built the initial functional version of a real-time restaurant-ordering voice agent in Python, integrating LiveKit, streaming STT/TTS, LLM reasoning, and structured tool execution.',
+      'Integrated Twilio for inbound calling and developed MongoDB-backed tools for menu search, modifier selection, cart updates, and structured order placement.',
+      'Tested transcription, interruption, incomplete-order, and tool-execution failures; later supported a senior engineer-led redesign through scenario testing, failure analysis, and structured product feedback.'
     ]
   }
 ];
@@ -76,11 +76,11 @@ export const PROJECTS: Project[] = [
     name: 'Waypoint Voice Lab',
     status: 'Development',
     section: 'featured',
-    tech: ['Python', 'LiveKit', 'FastAPI', 'SQLite', 'Deepgram', 'Groq', 'Cartesia', 'React/TypeScript'],
+    tech: ['Python', 'LiveKit', 'Deepgram', 'Cartesia', 'FastAPI', 'SQLite'],
     highlights: [
-      'Built an end-to-end real-time travel-support Voice AI system connecting a LiveKit Python agent to deterministic FastAPI/SQLite tools for application status, missing documents, and travel-date updates.',
-      'Added confirmation-gated mutations, idempotent retry safety, application-ID normalization, failure-safe tool execution, human handoff, interruption handling, and authoritative backend state.',
-      'Instrumented transcription and turn latency, LLM TTFT, TTS TTFB, end-to-end response time, tool calls, and usage; validated the system with 80+ automated and provider-backed tests/evaluations.'
+      'Built a multilingual real-time travel-support voice agent using LiveKit, streaming STT/TTS, and LLM tool calling to create and check applications, explain missing documents, confirm travel-date changes, and create human support requests.',
+      'Designed typed FastAPI and SQLite tool boundaries with backend validation, confirmation-gated mutations, transactional idempotency, and Gemini-to-Cerebras fallback for provider failures.',
+      'Added session observability for latency, tool execution, provider usage, interruptions, and failures; validated workflows with 80 provider-free Python tests, 8 provider-backed agent evals, and multilingual live-call testing.'
     ],
     links: [
       { label: 'GitHub', href: 'https://github.com/Parth-Bisht-227/waypoint-voice-ai' }
@@ -93,14 +93,28 @@ export const PROJECTS: Project[] = [
     section: 'featured',
     tech: ['React Native', 'TypeScript', 'Firebase', 'Firestore'],
     highlights: [
-      'Ongoing PTE preparation mobile application covering all 22 question workflows, Guided Practice, audio playback and speaking recording, detailed review, deterministic objective scoring, and a reproducible 65-item Full Mock.',
-      'Designed an auditable content pipeline that converted a legacy WordPress archive into 1,927 canonical questions and 1,485 media assets across 22 types, 2,735 placements, and 333 quizzes, with provenance, validation, quarantine, and immutable, versioned outputs.',
-      'Defined local-first reliability around account-scoped optimistic progress, durable/idempotent retries, account isolation, offline/session recovery, rollback/last-known-good behavior, race-safe account deletion, and protection against deleted-user data recreation; validated the Development build through 703 automated tests and physical Android acceptance.'
+      'Local-first PTE preparation mobile application covering all 22 question workflows, Guided Practice, audio playback and speaking recording, detailed review, and a 65-item Full Mock.',
+      'Reworked legacy question bank into a structured dataset of 1,927 questions and 1,485 media assets with canonical content format and provenance.',
+      'Built cloud content delivery, offline caching, progress sync, rollback, and account lifecycle; validated through 700+ automated tests and physical device acceptance.'
     ],
     links: []
   },
   {
-    id: 'manga-03',
+    id: 'grocery-03',
+    name: 'DTU Grocery Compare',
+    status: 'Live · Utility',
+    section: 'featured',
+    tech: ['Python', 'Streamlit', 'Playwright', 'BeautifulSoup', 'SKU Matching'],
+    highlights: [
+      'Built a local Streamlit app that compares live Blinkit and Instamart grocery prices for the DTU campus area in real time.',
+      'Implemented automated Playwright scraping with location targeting and conservative SKU string/quantity matching to compare identical product variants reliably.'
+    ],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/Parth-Bisht-227/dtu-grocery-compare' }
+    ]
+  },
+  {
+    id: 'manga-04',
     name: 'Manga-Splasher',
     status: 'Live',
     section: 'featured',
@@ -115,21 +129,21 @@ export const PROJECTS: Project[] = [
     ]
   },
   {
-    id: 'sekai-04',
+    id: 'sekai-05',
     name: 'Parth no Sekai',
     status: 'Live · DSA Workspace',
     section: 'personal',
     tech: ['Next.js', 'Supabase', 'Spaced Review', 'DSA'],
     highlights: [
-      'My Notion-based DSA tracker was becoming another task to maintain, so I built the focused revision flow I wanted. Logging an attempt now takes a few seconds without breaking practice.',
-      'I used AI as a development partner to turn that friction into a searchable workspace for Clean / Hint / Stuck outcomes, durable notes, and scheduled reviews.'
+      'Custom revision flow for algorithmic practice replacing bloated Notion trackers; logging an attempt takes seconds without breaking focus.',
+      'Searchable workspace for Clean / Hint / Stuck outcomes, durable notes, and scheduled spaced review to strengthen core problem-solving.'
     ],
     links: [
       { label: 'Live', href: 'https://parth-no-sekai.vercel.app/' }
     ]
   },
   {
-    id: 'voice-05',
+    id: 'voice-06',
     name: 'Murf Falcon Voice Ordering Agent',
     status: 'Earlier Build',
     section: 'earlier',
@@ -163,10 +177,9 @@ export const RAPID_PROTOTYPES = [
 
 export const SKILLS = [
   { category: 'PROGRAMMING', skills: ['Python', 'Java', 'C++', 'SQL'] },
-  { category: 'BACKEND / DATA', skills: ['FastAPI', 'Pydantic', 'MongoDB', 'SQLite', 'Streamlit'] },
-  { category: 'VOICE AI / AGENT SYSTEMS', skills: ['LiveKit', 'Deepgram', 'Twilio / SIP', 'Streaming STT/TTS', 'LLM APIs', 'Structured Function/Tool Calling', 'Conversational State / Agent Workflows'] },
-  { category: 'MACHINE LEARNING', skills: ['PyTorch', 'TensorFlow/Keras', 'OpenCV'] },
-  { category: 'ENGINEERING / TOOLS', skills: ['pytest', 'Git / GitHub'] },
+  { category: 'BACKEND & DEVELOPMENT', skills: ['FastAPI', 'Pydantic', 'MongoDB', 'SQLite', 'Streamlit'] },
+  { category: 'VOICE AI & AGENT SYSTEMS', skills: ['LiveKit', 'Deepgram', 'Cartesia', 'Twilio / SIP', 'Streaming STT/TTS', 'LLM APIs', 'Structured Function / Tool Calling'] },
+  { category: 'MACHINE LEARNING & TOOLS', skills: ['PyTorch', 'TensorFlow/Keras', 'OpenCV', 'pytest', 'Git / GitHub'] },
   { category: 'FUNDAMENTALS', skills: ['DSA', 'OOP', 'DBMS', 'Operating Systems', 'Computer Networks'] }
 ];
 
@@ -182,7 +195,7 @@ export const SYSTEM_DATA = {
   focus: 'AI Engineering',
   education: 'DTU IT \'27',
   headline: 'Turning messy problems into working products.',
-  subtext: 'I’m Parth, a final-year IT student at DTU and an AI Product Engineering Intern at Tsubasa Technologies. I’m exploring applied AI and Voice AI by building products, testing edge cases, and learning from what breaks.',
+  subtext: 'I’m Parth, an IT undergraduate at DTU (\'27) and an AI Product Engineering Intern at Tsubasa Technologies. I’m exploring applied AI and Voice AI by building products, testing edge cases, and learning from what breaks.',
   bootSequence: [
     'Initializing Neural Kernels...',
     'Mounting DTU_IT_NODE_2027...',
